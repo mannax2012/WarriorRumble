@@ -14,8 +14,9 @@ character characterCreation(string characterName, string weaponQualityType) {
     createChar.stamina = (rand() % 5 + 5);
     createChar.HPTOTAL = (2 * createChar.stamina);
     createChar.RAGETOTAL = 100;
+    createChar.rage = createChar.RAGETOTAL - combatStats.rageRemaining;
     createChar.health = createChar.HPTOTAL - combatStats.totalHealthDamage;
-    createChar.weaponAttack = (2 * createChar.strength) * (static_cast<int>(weaponQuality));
+    createChar.weaponAttack = (2 * createChar.strength) + (static_cast<int>(weaponQuality));
     createChar.souls = (rand() % 5 + 5);
     return createChar;
 }

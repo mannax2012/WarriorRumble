@@ -5,7 +5,6 @@ using namespace std;
 string weaponTypeF(materials weaponQuality) {
     map<materials, string> MaterialToStringMap{
             {materials::Basic, "Basic"},
-            {materials::Wood, "Wood"},
             {materials::Oak, "Oak"},
             {materials::Copper, "Copper"},
             {materials::Bronze, "Bronze"},

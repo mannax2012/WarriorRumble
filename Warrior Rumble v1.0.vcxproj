@@ -136,6 +136,7 @@
     <ClCompile Include="character.cpp" />
     <ClCompile Include="levelUpTask.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="rumbleShop.cpp" />
     <ClCompile Include="weapons.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

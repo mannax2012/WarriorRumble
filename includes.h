@@ -19,5 +19,7 @@ character characterCreation(string characterName, string weaponQualityType);
 void printInfo(character createChar);
 character levelUpTask(character createChar, lvlUp lvlBonus, string weaponQualityType);
 string weaponTypeF(materials weaponQuality);
-string weaponChoiceF(weapons weaponChoice);
+string weaponChoiceF(weapons weaponChoice); 
+void pFirstScreen(character createChar);
+void rumbleShop(character createChar);
 #endif //WARRIOR_RUMBLE_INCLUDES_H
