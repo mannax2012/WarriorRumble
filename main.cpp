@@ -1,7 +1,7 @@
 #include "includes.h"
 using namespace std;
 const string pError = "Incorrect entry - Please try again.";
-short pArray[7] = { 1,2,3 };
+short pArray[3] = { 1,2,3 };
 string weaponType;
 weapons weaponChoice = weapons::unarmed;
 materials weaponQuality = materials::Basic;
@@ -46,12 +46,14 @@ void pFirstScreen(character createChar) {
     cout << "(1) Show Stats (2) Rumble Shop (3) Challenge Menu" << endl;
     cin >> menuOptionChoice;
 
+    
     if ((cin.fail())) {
         cout << pError << endl;
         cin.clear();
-        cin.ignore(std::numeric_limits<int>::max(), '\n');
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         pFirstScreen(createChar);
     }
+    
     bool pExists = std::find(std::begin(pArray), std::end(pArray), menuOptionChoice) != std::end(pArray);
     if (pExists) {
         switch (menuOptionChoice) {

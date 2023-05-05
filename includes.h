@@ -6,10 +6,13 @@
 #include <cmath>
 #include <ctime>
 #include <array>
+#define NOMINMAX
 #include <windows.h>
+#undef NOMINMAX
 #include <tchar.h>
 #include <strsafe.h>
 #include <map>
+#include <limits>
 #include "main.h"
 #include "character.h"
 #include "weapons.h"
