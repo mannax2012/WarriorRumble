@@ -1,5 +1,5 @@
-#ifndef ADVENTURE_GAME_CHARACTER_H
-#define ADVENTURE_GAME_CHARACTER_H
+#ifndef WARRIOR_RUMBLE_CHARACTER_H
+#define WARRIOR_RUMBLE_CHARACTER_H
 #include "includes.h"
 
 using namespace std;
@@ -13,9 +13,10 @@ typedef struct lvlUp {
 } lvlUp;
 
 typedef struct combat {
-    int totalDamage,
-        totalRAGE;
-}combat;
+
+    int totalHealthDamage = 0,
+        rageRemaining = 0;
+} combat;
 
 typedef struct character {
 
@@ -29,11 +30,10 @@ typedef struct character {
         stamina = 0,
         HPTOTAL,
         RAGETOTAL,
-        totalDamage=0,
-            weaponAttack,
-            souls = 1;
+        weaponAttack,
+        souls = 1;
     lvlUp lvlBonus;
     combat combatStats;
 } character;
 
-#endif //ADVENTURE_GAME_CHARACTER_H
+#endif //WARRIOR_RUMBLE_CHARACTER_H

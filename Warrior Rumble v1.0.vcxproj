@@ -133,7 +133,7 @@
     <ClInclude Include="weapons.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\adventure_game\character.cpp" />
+    <ClCompile Include="character.cpp" />
     <ClCompile Include="levelUpTask.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="weapons.cpp" />
