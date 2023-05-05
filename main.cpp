@@ -1,11 +1,29 @@
 #include "includes.h"
 using namespace std;
+const string pError = "Incorrect entry - Please try again.";
 string weaponType;
 weapons weaponChoice = weapons::unarmed;
 materials weaponQuality = materials::Basic;
 string weaponQualityType = weaponTypeF(weaponQuality);
 
 int main() {
+
+    TCHAR szOldTitle[MAX_PATH];
+    TCHAR szNewTitle[MAX_PATH];
+
+    // Save current console title.
+    if (GetConsoleTitle(szOldTitle, MAX_PATH))
+    {
+        // Build new console title string.
+        StringCchPrintf(szNewTitle, MAX_PATH, TEXT("Warrior Rumble v1.0"), szOldTitle);
+
+        // Set console title to new title
+        if (!SetConsoleTitle(szNewTitle))
+        {
+            _tprintf(TEXT("SetConsoleTitle failed (%d)\n"), GetLastError());
+        }
+    };
+
     string characterName;
     cout << "Welcome to Warrior Rumble! Please enter your Warrior's name." << endl;
     cout << "Enter Name: ";
@@ -20,26 +38,37 @@ int main() {
     pFirstScreen(player);
     return 0;
 }
+
 void pFirstScreen(character createChar) {
-    short menuOptionChoice;
+    int menuOptionChoice;
     cout << "What would you like to do?" << endl;
     cout << "(1) Show Stats (2) Rumble Shop (3) Challenge Menu" << endl;
     cin >> menuOptionChoice;
 
-    switch (menuOptionChoice) {
-    case 1:
-        printInfo(createChar);
-        system("pause");
+    if ((cin.fail())) {
+        cout << pError << endl;
+        cin.clear();
+        cin.ignore(std::numeric_limits<int>::max(), '\n');
         pFirstScreen(createChar);
-        break;
-    case 2:
-        rumbleShop(createChar);
-        break;
-    case 3:
-        break;
+    }
+    else {
+        switch (menuOptionChoice) {
+        case 1:
+            printInfo(createChar);
+            system("pause");
+            pFirstScreen(createChar);
+            break;
+        case 2:
+            rumbleShop(createChar);
+            break;
+        case 3:
+            challengeMenu(createChar);
+            break;
+        }
+    }
+    
     };
 
-};
 void printInfo(character createChar) {
     
     weaponType = weaponChoiceF(weaponChoice);

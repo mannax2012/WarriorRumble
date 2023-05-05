@@ -133,6 +133,7 @@
     <ClInclude Include="weapons.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="challenges.cpp" />
     <ClCompile Include="character.cpp" />
     <ClCompile Include="levelUpTask.cpp" />
     <ClCompile Include="main.cpp" />
