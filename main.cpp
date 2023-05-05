@@ -1,6 +1,7 @@
 #include "includes.h"
 using namespace std;
 const string pError = "Incorrect entry - Please try again.";
+short pArray[7] = { 1,2,3 };
 string weaponType;
 weapons weaponChoice = weapons::unarmed;
 materials weaponQuality = materials::Basic;
@@ -51,7 +52,8 @@ void pFirstScreen(character createChar) {
         cin.ignore(std::numeric_limits<int>::max(), '\n');
         pFirstScreen(createChar);
     }
-    else {
+    bool pExists = std::find(std::begin(pArray), std::end(pArray), menuOptionChoice) != std::end(pArray);
+    if (pExists) {
         switch (menuOptionChoice) {
         case 1:
             printInfo(createChar);
@@ -65,6 +67,9 @@ void pFirstScreen(character createChar) {
             challengeMenu(createChar);
             break;
         }
+        }else { 
+        cout << pError << endl; 
+        pFirstScreen(createChar); 
     }
     
     };
