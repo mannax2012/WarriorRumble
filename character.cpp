@@ -3,10 +3,10 @@
 using namespace std;
 int cExpGainTotal = 0;
 
-character characterCreation(string characterName, string weaponQualityType) {
+character characterCreation(string characterName, string weaponQualityType, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType) {
     character createChar;
     combat combatStats;
-    weaponQualityType = weaponTypeF(weaponQuality);
+
     createChar.name = characterName;
     createChar.expChar += createChar.expChar + cExpGainTotal;
     createChar.level = createChar.level + (createChar.expChar / 1000);
@@ -19,7 +19,7 @@ character characterCreation(string characterName, string weaponQualityType) {
     createChar.charArmor.helmArmor = (static_cast<int>(helmQuality)) + (static_cast<int>(armorVals));
     createChar.charArmor.bodyArmor = (static_cast<int>(armorQuality)) + (static_cast<int>(armorVals));
     createChar.charArmor.sheildArmor = (static_cast<int>(sheildQuality)) + (static_cast<int>(armorVals));
-    createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.helmArmor + createChar.charArmor.sheildArmor;
+    createChar.charArmor.armorTotal += createChar.charArmor.bodyArmor + createChar.charArmor.helmArmor + createChar.charArmor.sheildArmor;
     createChar.weaponAttack = (2 * createChar.strength) + (static_cast<int>(weaponQuality));
     createChar.souls = 200;
     return createChar;

@@ -13,6 +13,6 @@ character levelUpTask(character createChar, lvlUp lvlBonus, string weaponQuality
     createChar.health += lvlBonus.health;
     createChar.stamina += lvlBonus.stamina;
     system("pause");
-    //printInfo(createChar, weaponQualityType, weaponType);
+    //printInfo(createChar, armorQualityType, helmQualityType, sheildQualityType,weaponQualityType, weaponType);
     return createChar;
 }
