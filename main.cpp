@@ -1,11 +1,10 @@
 #include "includes.h"
 using namespace std;
-const string pError = "Incorrect entry - Please try again.";
-short pArray[3] = { 1,2,3 };
+string weaponQualityType = weaponTypeF(weaponQuality);
 string weaponType;
+short pArray[3] = { 1,2,3 };
 weapons weaponChoice = weapons::unarmed;
 materials weaponQuality = materials::Basic;
-string weaponQualityType = weaponTypeF(weaponQuality);
 
 int main() {
 
@@ -32,15 +31,15 @@ int main() {
     cout << "You have just taken your first steps to becoming a great Warrior. " << characterName << "! Welcome to the Warrior RUMBLE!!" << endl;
     character player = characterCreation(characterName, weaponQualityType);
     
-    printInfo(player);
+    printInfo(player, weaponQualityType, weaponType);
 
     system("pause");
 
-    pFirstScreen(player);
+    pFirstScreen(player, weaponQualityType, weaponType);
     return 0;
 }
 
-void pFirstScreen(character createChar) {
+void pFirstScreen(character createChar, string weaponQualityType, string weaponType) {
     int menuOptionChoice;
     cout << "What would you like to do?" << endl;
     cout << "(1) Show Stats (2) Rumble Shop (3) Challenge Menu" << endl;
@@ -51,32 +50,32 @@ void pFirstScreen(character createChar) {
         cout << pError << endl;
         cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        pFirstScreen(createChar);
+        pFirstScreen(createChar, weaponQualityType, weaponType);
     }
     
     bool pExists = std::find(std::begin(pArray), std::end(pArray), menuOptionChoice) != std::end(pArray);
     if (pExists) {
         switch (menuOptionChoice) {
         case 1:
-            printInfo(createChar);
+            printInfo(createChar, weaponQualityType, weaponType);
             system("pause");
-            pFirstScreen(createChar);
+            pFirstScreen(createChar, weaponQualityType, weaponType);
             break;
         case 2:
-            rumbleShop(createChar);
+            shopMenu(createChar, weaponQualityType, weaponType);
             break;
         case 3:
-            challengeMenu(createChar);
+            challengeMenu(createChar, weaponQualityType, weaponType);
             break;
         }
         }else { 
         cout << pError << endl; 
-        pFirstScreen(createChar); 
+        pFirstScreen(createChar, weaponQualityType, weaponType);
     }
     
     };
 
-void printInfo(character createChar) {
+void printInfo(character createChar, string weaponQualityType, string weaponType) {
     
     weaponType = weaponChoiceF(weaponChoice);
 
@@ -89,5 +88,5 @@ void printInfo(character createChar) {
     cout << "Stamina: " << createChar.stamina << endl;
     cout << "Weapon Type: " << weaponQualityType << " " << weaponType << endl;
     cout << "Attack Power: " << createChar.weaponAttack << endl;
-    cout << "Lives Remaining: " << createChar.souls << endl;
+    cout << "Souls: " << createChar.souls << endl;
 }

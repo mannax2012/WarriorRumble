@@ -31,7 +31,7 @@ typedef struct character {
         HPTOTAL,
         RAGETOTAL,
         weaponAttack,
-        souls = 1;
+        souls = 0;
     lvlUp lvlBonus;
     combat combatStats;
 } character;

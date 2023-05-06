@@ -20,6 +20,7 @@ string weaponChoiceF(weapons weaponChoice) {
             {weapons::sword, "Sword"},
             {weapons::axe, "Axe"},
             {weapons::unarmed, "Unarmed"},
+            {weapons::poleaxe, "Poleaxe"}
     };
     return WeaponToStringMap[weaponChoice];
 }

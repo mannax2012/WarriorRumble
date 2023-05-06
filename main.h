@@ -3,7 +3,7 @@
 #define WARRIOR_RUMBLE_MAIN_H
 #include "includes.h"
 using namespace std;
-
+const string pError = "Incorrect entry - Please try again.";
 enum attacks {Slash, Jab, Heavy};
 
 /* Materials Structure */
@@ -11,5 +11,5 @@ enum attacks {Slash, Jab, Heavy};
 enum materials {Basic = 1, Oak = 2, Copper = 3, Bronze = 4, Iron = 5, Steel = 6, Mithril = 7 };
 
 /* Weapon Structure */
-enum weapons { sword = 5, axe = 2, unarmed = 1 };
+enum weapons { sword = 3, poleaxe = 4, axe = 2, unarmed = 1 };
 #endif 

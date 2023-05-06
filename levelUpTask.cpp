@@ -1,7 +1,7 @@
 #include "includes.h"
 using namespace std;
 
-character levelUpTask(character createChar, lvlUp lvlBonus, string weaponQualityType){
+character levelUpTask(character createChar, lvlUp lvlBonus, string weaponQualityType, string weaponType){
     cout << "You have gained a level!!" << endl;
     cout << "Character Level: " << createChar.level + (createChar.expChar / 1000) << endl;
     cout << "Experience: " << createChar.expChar << endl;
@@ -13,6 +13,6 @@ character levelUpTask(character createChar, lvlUp lvlBonus, string weaponQuality
     createChar.health += lvlBonus.health;
     createChar.stamina += lvlBonus.stamina;
     system("pause");
-    printInfo(createChar);
+    //printInfo(createChar, weaponQualityType, weaponType);
     return createChar;
 }

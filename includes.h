@@ -18,11 +18,14 @@
 #include "weapons.h"
 
 character characterCreation(string characterName, string weaponQualityType);
-void printInfo(character createChar);
-character levelUpTask(character createChar, lvlUp lvlBonus, string weaponQualityType);
+void printInfo(character createChar, string weaponQualityType, string weaponType);
+character levelUpTask(character createChar, lvlUp lvlBonus, string weaponQualityType, string weaponType);
 string weaponTypeF(materials weaponQuality);
 string weaponChoiceF(weapons weaponChoice); 
-void pFirstScreen(character createChar);
-void rumbleShop(character createChar);
-void challengeMenu(character createChar);
+void pFirstScreen(character createChar, string weaponQualityType, string weaponType);
+void challengeMenu(character createChar, string weaponQualityType, string weaponType);
+void shopMenuWeapons(character createChar, string weaponQualityType, string weaponType);
+void shopMenu(character createChar, string weaponQualityType, string weaponType);
+void shopMenuArmor(character createChar, string weaponQualityType, string weaponType);
+void shopMenuSwords(character createChar, string weaponQualityType, string weaponType);
 #endif //WARRIOR_RUMBLE_INCLUDES_H
