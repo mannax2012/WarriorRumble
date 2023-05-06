@@ -16,6 +16,10 @@ character characterCreation(string characterName, string weaponQualityType) {
     createChar.RAGETOTAL = 100;
     createChar.rage = createChar.RAGETOTAL - combatStats.rageRemaining;
     createChar.health = createChar.HPTOTAL - combatStats.totalHealthDamage;
+    createChar.charArmor.helmArmor = (static_cast<int>(helmQuality)) + (static_cast<int>(armorVals));
+    createChar.charArmor.bodyArmor = (static_cast<int>(armorQuality)) + (static_cast<int>(armorVals));
+    createChar.charArmor.sheildArmor = (static_cast<int>(sheildQuality)) + (static_cast<int>(armorVals));
+    createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.helmArmor + createChar.charArmor.sheildArmor;
     createChar.weaponAttack = (2 * createChar.strength) + (static_cast<int>(weaponQuality));
     createChar.souls = 200;
     return createChar;

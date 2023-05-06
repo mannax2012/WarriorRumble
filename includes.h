@@ -16,16 +16,22 @@
 #include "main.h"
 #include "character.h"
 #include "weapons.h"
+#include "armor.h"
 
 character characterCreation(string characterName, string weaponQualityType);
 void printInfo(character createChar, string weaponQualityType, string weaponType);
 character levelUpTask(character createChar, lvlUp lvlBonus, string weaponQualityType, string weaponType);
 string weaponTypeF(materials weaponQuality);
-string weaponChoiceF(weapons weaponChoice); 
+string weaponChoiceF(weapons weaponChoice);
+string helmTypeF(materials helmQuality);
+string armorTypeF(materials armorQuality);
+string sheildTypeF(materials helmQuality);
 void pFirstScreen(character createChar, string weaponQualityType, string weaponType);
 void challengeMenu(character createChar, string weaponQualityType, string weaponType);
 void shopMenuWeapons(character createChar, string weaponQualityType, string weaponType);
 void shopMenu(character createChar, string weaponQualityType, string weaponType);
 void shopMenuArmor(character createChar, string weaponQualityType, string weaponType);
 void shopMenuSwords(character createChar, string weaponQualityType, string weaponType);
+void shopMenuPoleaxes(character createChar, string weaponQualityType, string weaponType);
+void shopMenuAxes(character createChar, string weaponQualityType, string weaponType);
 #endif //WARRIOR_RUMBLE_INCLUDES_H

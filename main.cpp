@@ -1,10 +1,19 @@
 #include "includes.h"
 using namespace std;
 string weaponQualityType = weaponTypeF(weaponQuality);
+string helmQualityType = helmTypeF(helmQuality);
+string armorQualityType = armorTypeF(armorQuality);
+string sheildQualityType = sheildTypeF(sheildQuality);
 string weaponType;
 short pArray[3] = { 1,2,3 };
 weapons weaponChoice = weapons::unarmed;
 materials weaponQuality = materials::Basic;
+materials helmQuality = materials::No;
+materials armorQuality = materials::No;
+materials sheildQuality = materials::No;
+armor armorHelmVals = armor::noAmor;
+armor armorVals = armor::noAmor;
+armor armorSheildVals = armor::noAmor;
 
 int main() {
 
@@ -86,7 +95,11 @@ void printInfo(character createChar, string weaponQualityType, string weaponType
     cout << "Rage: " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
     cout << "Strength: " << createChar.strength << endl;
     cout << "Stamina: " << createChar.stamina << endl;
+    cout << "Armor Rating: " << createChar.charArmor.armorTotal << endl;
     cout << "Weapon Type: " << weaponQualityType << " " << weaponType << endl;
+    cout << "Helmet Type: " << helmQualityType << " " << "Helmet" << endl;
+    cout << "Body Armor Type: " << armorQualityType << " " << "Body Amor" << endl;
+    cout << "Sheild Type: " << sheildQualityType << " " << "Sheild" << endl;
     cout << "Attack Power: " << createChar.weaponAttack << endl;
     cout << "Souls: " << createChar.souls << endl;
 }

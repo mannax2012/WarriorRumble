@@ -17,7 +17,12 @@ typedef struct combat {
     int totalHealthDamage = 0,
         rageRemaining = 0;
 } combat;
-
+typedef struct armorval {
+    int armorTotal = 0,
+        helmArmor = 0,
+        bodyArmor = 0,
+        sheildArmor = 0;
+}armorval;
 typedef struct character {
 
     string name;
@@ -34,6 +39,7 @@ typedef struct character {
         souls = 0;
     lvlUp lvlBonus;
     combat combatStats;
+    armorval charArmor;
 } character;
 
 #endif //WARRIOR_RUMBLE_CHARACTER_H
