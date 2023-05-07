@@ -35,4 +35,5 @@ void shopMenuSwords(character createChar);
 void shopMenuPoleaxes(character createChar);
 void shopMenuAxes(character createChar);
 character shopMenuHelms (character createChar);
+character shopMenuBodyArmor(character createChar);
 #endif //WARRIOR_RUMBLE_INCLUDES_H

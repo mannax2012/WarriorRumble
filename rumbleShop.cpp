@@ -573,7 +573,7 @@ void shopMenuArmor(character createChar) {
 						shopMenuHelms(createChar);
 						break;
 					case 2:
-						//shopMenuBodyArmor(createChar);
+						shopMenuBodyArmor(createChar);
 						break;
 					case 3:
 						//shopMenuSheilds(createChar);
@@ -614,8 +614,8 @@ character shopMenuHelms(character createChar) {
 				shopMenuHelms(createChar);
 			}
 			else {
-				if (helmQuality == materials::Oak) {
-					cout << "You already own a helmet of this quality." << endl;
+				if (helmQuality >= 3) {
+					cout << "You already own a helmet of this quality or better." << endl;
 					shopMenuHelms(createChar);
 				}
 				else {
@@ -624,7 +624,10 @@ character shopMenuHelms(character createChar) {
 					helmQuality = materials::Oak;
 					createChar.armorQHelm = helmTypeF(helmQuality);
 					createChar.souls = createChar.souls - 1;
-					cout << "You bought an " << createChar.armorQHelm << " " << "Helmet, for 1 soul. It has " << createChar.charArmor.helmArmor << "\nYou have " << createChar.souls << " remaining." << endl;
+					createChar.charArmor.helmArmor = (static_cast<int>(helmQuality)) + (static_cast<int>(helmVals));
+					cout << "You bought an " << createChar.armorQHelm << " " << "Helmet, for 1 soul. It has " << createChar.charArmor.helmArmor << " Armor." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.helmArmor + createChar.charArmor.sheildArmor;
 					shopMenuHelms(createChar);
 				}
 			}
@@ -635,8 +638,8 @@ character shopMenuHelms(character createChar) {
 				shopMenuHelms(createChar);
 			}
 			else {
-				if (helmQuality == materials::Copper){
-					cout << "You already own a helmet of this quality." << endl;
+				if (helmQuality >= 4){
+					cout << "You already own a helmet of this quality or better." << endl;
 					shopMenuHelms(createChar);
 					}
 				else {
@@ -644,8 +647,11 @@ character shopMenuHelms(character createChar) {
 						helmVals = armor::helm;
 						helmQuality = materials::Copper;
 						createChar.armorQHelm = helmTypeF(helmQuality);
-						createChar.souls = createChar.souls - 1;
-						cout << "You bought a " << createChar.armorQHelm << " " << "Helmet, for 1 soul. \nYou have " << createChar.souls << " remaining." << endl;
+						createChar.souls = createChar.souls - 5;
+						createChar.charArmor.helmArmor = (static_cast<int>(helmQuality)) + (static_cast<int>(helmVals));
+						cout << "You bought an " << createChar.armorQHelm << " " << "Helmet, for 5 souls. It has " << createChar.charArmor.helmArmor << " Armor." << endl;
+						cout << "You have " << createChar.souls << " remaining." << endl;
+						createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.helmArmor + createChar.charArmor.sheildArmor;
 						shopMenuHelms(createChar);
 				}
 			}
@@ -656,8 +662,8 @@ character shopMenuHelms(character createChar) {
 				shopMenuHelms(createChar);
 			}
 			else {
-				if (helmQuality == materials::Bronze) {
-					cout << "You already own a helmet of this quality." << endl;
+				if (helmQuality >= 5) {
+					cout << "You already own a helmet of this quality or better." << endl;
 					shopMenuHelms(createChar);
 				}
 				else {
@@ -665,8 +671,11 @@ character shopMenuHelms(character createChar) {
 					helmVals = armor::helm;
 					helmQuality = materials::Bronze;
 					createChar.armorQHelm = helmTypeF(helmQuality);
-					createChar.souls = createChar.souls - 1;
-					cout << "You bought a " << createChar.armorQHelm << " " << "Helmet, for 1 soul. \nYou have " << createChar.souls << " remaining." << endl;
+					createChar.souls = createChar.souls - 10;
+					createChar.charArmor.helmArmor = (static_cast<int>(helmQuality)) + (static_cast<int>(helmVals));
+					cout << "You bought an " << createChar.armorQHelm << " " << "Helmet, for 10 souls. It has " << createChar.charArmor.helmArmor << " Armor." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.helmArmor + createChar.charArmor.sheildArmor;
 					shopMenuHelms(createChar);
 				}
 			}
@@ -678,8 +687,8 @@ character shopMenuHelms(character createChar) {
 				shopMenuHelms(createChar);
 			}
 			else {
-				if (helmQuality == materials::Iron) {
-					cout << "You already own a helmet of this quality." << endl;
+				if (helmQuality >= 6) {
+					cout << "You already own a helmet of this quality or better." << endl;
 					shopMenuHelms(createChar);
 				}
 				else {
@@ -687,8 +696,11 @@ character shopMenuHelms(character createChar) {
 					helmVals = armor::helm;
 					helmQuality = materials::Iron;
 					createChar.armorQHelm = helmTypeF(helmQuality);
-					createChar.souls = createChar.souls - 1;
-					cout << "You bought a " << createChar.armorQHelm << " " << "Helmet, for 1 soul. \nYou have " << createChar.souls << " remaining." << endl;
+					createChar.souls = createChar.souls - 15;
+					createChar.charArmor.helmArmor = (static_cast<int>(helmQuality)) + (static_cast<int>(helmVals));
+					cout << "You bought an " << createChar.armorQHelm << " " << "Helmet, for 15 souls. It has " << createChar.charArmor.helmArmor << " Armor." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.helmArmor + createChar.charArmor.sheildArmor;
 					shopMenuHelms(createChar);
 				}
 			}
@@ -699,8 +711,8 @@ character shopMenuHelms(character createChar) {
 				shopMenuHelms(createChar);
 			}
 			else {
-				if (helmQuality == materials::Steel) {
-					cout << "You already own a helmet of this quality." << endl;
+				if (helmQuality >= 7) {
+					cout << "You already own a helmet of this quality or better." << endl;
 					shopMenuHelms(createChar);
 				}
 				else {
@@ -708,8 +720,11 @@ character shopMenuHelms(character createChar) {
 					helmVals = armor::helm;
 					helmQuality = materials::Steel;
 					createChar.armorQHelm = helmTypeF(helmQuality);
-					createChar.souls = createChar.souls - 1;
-					cout << "You bought a " << createChar.armorQHelm << " " << "Helmet, for 1 soul. \nYou have " << createChar.souls << " remaining." << endl;
+					createChar.souls = createChar.souls - 25;
+					createChar.charArmor.helmArmor = (static_cast<int>(helmQuality)) + (static_cast<int>(helmVals));
+					cout << "You bought an " << createChar.armorQHelm << " " << "Helmet, for 25 souls. It has "  << createChar.charArmor.helmArmor << " Armor." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.helmArmor + createChar.charArmor.sheildArmor;
 					shopMenuHelms(createChar);
 				}
 			}
@@ -720,8 +735,8 @@ character shopMenuHelms(character createChar) {
 				shopMenuHelms (createChar);
 			}
 			else {
-				if (helmQuality == materials::Mithril) {
-					cout << "You already own a helmet of this quality." << endl;
+				if (helmQuality >= 10) {
+					cout << "You already own a helmet of this quality or better." << endl;
 					shopMenuHelms(createChar);
 				}
 				else {
@@ -729,9 +744,188 @@ character shopMenuHelms(character createChar) {
 					helmVals = armor::helm;
 					helmQuality = materials::Mithril;
 					createChar.armorQHelm = helmTypeF(helmQuality);
-					createChar.souls = createChar.souls - 1;
-					cout << "You bought a " << createChar.armorQHelm << " " << "Helmet, for 1 soul. \nYou have " << createChar.souls << " remaining." << endl;
+					createChar.souls = createChar.souls - 50;
+					createChar.charArmor.helmArmor = (static_cast<int>(helmQuality)) + (static_cast<int>(helmVals));
+					cout << "You bought a " << createChar.armorQHelm << " " << "Helmet, for 50 souls. It has " << createChar.charArmor.helmArmor << " Armor." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.helmArmor + createChar.charArmor.sheildArmor;
 					shopMenuHelms(createChar);
+				}
+			}
+			break;
+		case 7:
+			shopMenu(createChar);
+			break;
+		}
+	}
+	return createChar;
+};
+
+character shopMenuBodyArmor(character createChar) {
+	int shopMenuChoice;
+
+	cout << "- Body Armor Menu -" << endl;
+	cout << "(1) Oak Body Armor - 1 Soul" << endl;
+	cout << "(2) Copper Body Armor - 5 Souls" << endl;
+	cout << "(3) Bronze Body Armor - 10 Souls" << endl;
+	cout << "(4) Iron Body Armor - 15 Souls" << endl;
+	cout << "(5) Steel Body Armor - 25 Souls" << endl;
+	cout << "(6) Mithril Body Armor - 50 Souls" << endl;
+	cout << "(7) Shop Menu" << endl;
+	cin >> shopMenuChoice;
+
+	if ((cin.fail())) {
+		cout << pError << endl;
+		cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		shopMenuBodyArmor(createChar);
+	}
+
+	bool pExists = std::find(std::begin(pArrayShopBuy), std::end(pArrayShopBuy), shopMenuChoice) != std::end(pArrayShopBuy);
+	if (pExists) {
+		switch (shopMenuChoice) {
+		case 1:
+			if (createChar.souls == 0) {
+				cout << "You do not have enough for this purchace." << endl;
+				shopMenuBodyArmor(createChar);
+			}
+			else {
+				if (armorQuality >= 3) {
+					cout << "You already own a Body Armor of this quality or better." << endl;
+					shopMenuBodyArmor(createChar);
+				}
+				else {
+					//Oak Body Armor
+					armorVals = armor::bodyArmor;
+					armorQuality = materials::Oak;
+					createChar.armorQBody = armorTypeF(armorQuality);
+					createChar.souls = createChar.souls - 1;
+					createChar.charArmor.bodyArmor = (static_cast<int>(armorQuality)) + (static_cast<int>(armorVals));
+					cout << "You bought an " << createChar.armorQBody << " " << "Body Armor, for 1 soul. It has " << createChar.charArmor.bodyArmor << " Armor." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.helmArmor + createChar.charArmor.sheildArmor;
+					shopMenuBodyArmor(createChar);
+				}
+			}
+			break;
+		case 2:
+			if (createChar.souls == 0) {
+				cout << "You do not have enough for this purchace." << endl;
+				shopMenuBodyArmor(createChar);
+			}
+			else {
+				if (armorQuality >= 4) {
+					cout << "You already own Body Armor of this quality or better." << endl;
+					shopMenuBodyArmor(createChar);
+				}
+				else {
+					//Copper Body Armor
+					armorVals = armor::bodyArmor;
+					armorQuality = materials::Copper;
+					createChar.armorQBody = armorTypeF(armorQuality);
+					createChar.souls = createChar.souls - 5;
+					createChar.charArmor.bodyArmor = (static_cast<int>(armorQuality)) + (static_cast<int>(armorVals));
+					cout << "You bought an " << createChar.armorQBody << " " << "Body Armor, for 5 souls. It has " << createChar.charArmor.bodyArmor << " Armor." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.helmArmor + createChar.charArmor.sheildArmor;
+					shopMenuBodyArmor(createChar);
+				}
+			}
+			break;
+		case 3:
+			if (createChar.souls == 0) {
+				cout << "You do not have enough for this purchace." << endl;
+				shopMenuBodyArmor(createChar);
+			}
+			else {
+				if (armorQuality >= 5) {
+					cout << "You already own Body Armor of this quality or better." << endl;
+					shopMenuBodyArmor(createChar);
+				}
+				else {
+					//Bronze Body Armor
+					armorVals = armor::bodyArmor;
+					armorQuality = materials::Bronze;
+					createChar.armorQBody = armorTypeF(armorQuality);
+					createChar.souls = createChar.souls - 10;
+					createChar.charArmor.bodyArmor = (static_cast<int>(armorQuality)) + (static_cast<int>(armorVals));
+					cout << "You bought an " << createChar.armorQBody << " " << "Body Armor, for 10 souls. It has " << createChar.charArmor.bodyArmor << " Armor." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.helmArmor + createChar.charArmor.sheildArmor;
+					shopMenuBodyArmor(createChar);
+				}
+			}
+			break;
+
+		case 4:
+			if (createChar.souls == 0) {
+				cout << "You do not have enough for this purchace." << endl;
+				shopMenuBodyArmor(createChar);
+			}
+			else {
+				if (armorQuality >= 6) {
+					cout << "You already own Body Armor of this quality or better." << endl;
+					shopMenuBodyArmor(createChar);
+				}
+				else {
+					//Iron Body Armor
+					armorVals = armor::bodyArmor;
+					armorQuality = materials::Iron;
+					createChar.armorQBody = armorTypeF(armorQuality);
+					createChar.souls = createChar.souls - 15;
+					createChar.charArmor.bodyArmor = (static_cast<int>(armorQuality)) + (static_cast<int>(armorVals));
+					cout << "You bought an " << createChar.armorQBody << " " << "Body Armor, for 1 souls. It has " << createChar.charArmor.bodyArmor << " Armor." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.helmArmor + createChar.charArmor.sheildArmor;
+					shopMenuBodyArmor(createChar);
+				}
+			}
+			break;
+		case 5:
+			if (createChar.souls == 0) {
+				cout << "You do not have enough for this purchace." << endl;
+				shopMenuBodyArmor(createChar);
+			}
+			else {
+				if (armorQuality >= 7) {
+					cout << "You already own Body Armor of this quality or better." << endl;
+					shopMenuBodyArmor(createChar);
+				}
+				else {
+					//Steel Helm
+					armorVals = armor::bodyArmor;
+					armorQuality = materials::Steel;
+					createChar.armorQBody = armorTypeF(armorQuality);
+					createChar.souls = createChar.souls - 25;
+					createChar.charArmor.bodyArmor = (static_cast<int>(armorQuality)) + (static_cast<int>(armorVals));
+					cout << "You bought an " << createChar.armorQBody << " " << "Body Armor, for 25 souls. It has " << createChar.charArmor.bodyArmor << " Armor." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.helmArmor + createChar.charArmor.sheildArmor;
+					shopMenuBodyArmor(createChar);
+				}
+			}
+			break;
+		case 6:
+			if (createChar.souls == 0) {
+				cout << "You do not have enough for this purchace." << endl;
+				shopMenuBodyArmor(createChar);
+			}
+			else {
+				if (armorQuality >= 10) {
+					cout << "You already own Body Armor of this quality or better." << endl;
+					shopMenuBodyArmor(createChar);
+				}
+				else {
+					//Mithril Helm
+					armorVals = armor::bodyArmor;
+					armorQuality = materials::Mithril;
+					createChar.armorQBody = armorTypeF(armorQuality);
+					createChar.souls = createChar.souls - 50;
+					createChar.charArmor.bodyArmor = (static_cast<int>(armorQuality)) + (static_cast<int>(armorVals));
+					cout << "You bought an " << createChar.armorQBody << " " << "Body Armor, for 50 souls. It has " << createChar.charArmor.bodyArmor << " Armor." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.helmArmor + createChar.charArmor.sheildArmor;
+					shopMenuBodyArmor(createChar);
 				}
 			}
 			break;
