@@ -5,9 +5,9 @@ materials weaponQuality = materials::Basic;
 materials helmQuality = materials::No;
 materials armorQuality = materials::No;
 materials sheildQuality = materials::No;
-armor armorHelmVals = armor::noAmor;
+armor helmVals = armor::noAmor;
 armor armorVals = armor::noAmor;
-armor armorSheildVals = armor::noAmor;
+armor sheildVals = armor::noAmor;
 string weaponQualityType = weaponTypeF(weaponQuality);
 string helmQualityType = helmTypeF(helmQuality);
 string armorQualityType = armorTypeF(armorQuality);
@@ -39,17 +39,17 @@ int main() {
     cout << "Enter Name: ";
     cin >> characterName;
     cout << "You have just taken your first steps to becoming a great Warrior. " << characterName << "! Welcome to the Warrior RUMBLE!!" << endl;
-    character player = characterCreation(characterName, armorQualityType, helmQualityType, sheildQualityType, weaponQualityType, weaponType);
+    character player = characterCreation(characterName, armorQualityType, helmQualityType, sheildQualityType, weaponQualityType, weaponType, helmQuality);
     
-    printInfo(player, armorQualityType, helmQualityType, sheildQualityType, weaponQualityType, weaponType);
+    printInfo(player);
 
     system("pause");
 
-    pFirstScreen(player, armorQualityType, helmQualityType, sheildQualityType, weaponQualityType, weaponType);
+    pFirstScreen(player);
     return 0;
 }
 
-void pFirstScreen(character createChar, string weaponQualityType, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType) {
+void pFirstScreen(character createChar) {
     int menuOptionChoice;
     cout << "What would you like to do?" << endl;
     cout << "(1) Show Stats (2) Rumble Shop (3) Challenge Menu" << endl;
@@ -60,38 +60,38 @@ void pFirstScreen(character createChar, string weaponQualityType, string weaponT
         cout << pError << endl;
         cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        pFirstScreen(createChar, armorQualityType, helmQualityType, sheildQualityType,weaponQualityType, weaponType);
+        pFirstScreen(createChar);
     }
     
     bool pExists = std::find(std::begin(pArray), std::end(pArray), menuOptionChoice) != std::end(pArray);
     if (pExists) {
         switch (menuOptionChoice) {
         case 1:
-            printInfo(createChar, armorQualityType, helmQualityType, sheildQualityType,weaponQualityType, weaponType);
+            printInfo(createChar);
             system("pause");
-            pFirstScreen(createChar, armorQualityType, helmQualityType, sheildQualityType,weaponQualityType, weaponType);
+            pFirstScreen(createChar);
             break;
         case 2:
-            shopMenu(createChar, armorQualityType, helmQualityType, sheildQualityType,weaponQualityType, weaponType);
+            shopMenu(createChar);
             break;
         case 3:
-            //challengeMenu(createChar, armorQualityType, helmQualityType, sheildQualityType, weaponQualityType, weaponType);
+            challengeMenu(createChar);
             break;
         }
         }else { 
         cout << pError << endl; 
-        pFirstScreen(createChar, armorQualityType, helmQualityType, sheildQualityType,weaponQualityType, weaponType);
+        pFirstScreen(createChar);
     }
     
     };
 
-void printInfo(character createChar, string weaponQualityType, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType) {
+void printInfo(character createChar) {
     
     weaponQualityType = weaponTypeF(weaponQuality);
+    weaponType = weaponChoiceF(weaponChoice);
     helmQualityType = helmTypeF(helmQuality);
     armorQualityType = armorTypeF(armorQuality);
     sheildQualityType = sheildTypeF(sheildQuality);
-    weaponType = weaponChoiceF(weaponChoice);
 
     cout << "Character Name: " << createChar.name << endl;
     cout << "Character Level: " << createChar.level + (createChar.expChar / 1000) << endl;
@@ -101,10 +101,10 @@ void printInfo(character createChar, string weaponQualityType, string weaponType
     cout << "Strength: " << createChar.strength << endl;
     cout << "Stamina: " << createChar.stamina << endl;
     cout << "Armor Rating: " << createChar.charArmor.armorTotal << endl;
-    cout << "Weapon Type: " << weaponQualityType << " " << weaponType << endl;
-    cout << "Helmet Type: " << helmQualityType << " " << "Helmet" << endl;
-    cout << "Body Armor Type: " << armorQualityType << " " << "Body Amor" << endl;
-    cout << "Sheild Type: " << sheildQualityType << " " << "Sheild" << endl;
+    cout << "Weapon Type: " << createChar.weaponQ << " " << createChar.weaponT << endl;
+    cout << "Helmet Type: " << createChar.armorQHelm << " " << "Helmet" << endl;
+    cout << "Body Armor Type: " << createChar.armorQBody << " " << "Body Amor" << endl;
+    cout << "Sheild Type: " << createChar.armorQSheild << " " << "Sheild" << endl;
     cout << "Attack Power: " << createChar.weaponAttack << endl;
     cout << "Souls: " << createChar.souls << endl;
 }

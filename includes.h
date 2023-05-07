@@ -18,21 +18,21 @@
 #include "weapons.h"
 #include "armor.h"
 
-character characterCreation(string characterName, string weaponQualityType, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType);
-void printInfo(character createChar, string weaponQualityType, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType);
+character characterCreation(string characterName, string weaponQualityType, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType, materials helmQuality);
+void printInfo(character createChar);
 character levelUpTask(character createChar, lvlUp lvlBonus, string weaponQualityType, string weaponType);
 string weaponTypeF(materials weaponQuality);
 string weaponChoiceF(weapons weaponChoice);
 string helmTypeF(materials helmQuality);
 string armorTypeF(materials armorQuality);
 string sheildTypeF(materials helmQuality);
-void pFirstScreen(character createChar, string weaponQualityType, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType);
-void challengeMenu(character createChar, string weaponQualityType, string weaponType);
-void shopMenuWeapons(character createChar, string weaponQualityType, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType);
-void shopMenu(character createChar, string weaponQualityType, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType);
-void shopMenuArmor(character createChar, string weaponQualityType, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType);
-void shopMenuSwords(character createChar, string weaponQualityType, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType);
-void shopMenuPoleaxes(character createChar, string weaponQualityType, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType);
-void shopMenuAxes(character createChar, string weaponQualityType, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType);
-character shopMenuHelms (character createChar, string weaponQualityType, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType);
+void pFirstScreen(character createChar);
+void challengeMenu(character createChar);
+void shopMenuWeapons(character createChar);
+void shopMenu(character createChar);
+void shopMenuArmor(character createChar);
+void shopMenuSwords(character createChar);
+void shopMenuPoleaxes(character createChar);
+void shopMenuAxes(character createChar);
+character shopMenuHelms (character createChar);
 #endif //WARRIOR_RUMBLE_INCLUDES_H
