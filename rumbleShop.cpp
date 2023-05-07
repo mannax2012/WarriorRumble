@@ -576,7 +576,7 @@ void shopMenuArmor(character createChar) {
 						shopMenuBodyArmor(createChar);
 						break;
 					case 3:
-						//shopMenuSheilds(createChar);
+						shopMenuSheilds(createChar);
 						break;
 					case 4:
 						shopMenu(createChar);
@@ -936,3 +936,180 @@ character shopMenuBodyArmor(character createChar) {
 	}
 	return createChar;
 };
+
+character shopMenuSheilds(character createChar) {
+	int shopMenuChoice;
+
+	cout << "- Sheilds Menu -" << endl;
+	cout << "(1) Oak Sheild - 1 Soul" << endl;
+	cout << "(2) Copper Sheild - 5 Souls" << endl;
+	cout << "(3) Bronze Sheild - 10 Souls" << endl;
+	cout << "(4) Iron Sheild - 15 Souls" << endl;
+	cout << "(5) Steel Sheild - 25 Souls" << endl;
+	cout << "(6) Mithril Sheild - 50 Souls" << endl;
+	cout << "(7) Shop Menu" << endl;
+	cin >> shopMenuChoice;
+
+	if ((cin.fail())) {
+		cout << pError << endl;
+		cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		shopMenuSheilds(createChar);
+	}
+
+	bool pExists = std::find(std::begin(pArrayShopBuy), std::end(pArrayShopBuy), shopMenuChoice) != std::end(pArrayShopBuy);
+	if (pExists) {
+		switch (shopMenuChoice) {
+		case 1:
+			if (createChar.souls == 0) {
+				cout << "You do not have enough for this purchace." << endl;
+				shopMenuSheilds(createChar);
+			}
+			else {
+				if (sheildQuality >= 3) {
+					cout << "You already own a Sheild of this quality or better." << endl;
+					shopMenuSheilds(createChar);
+				}
+				else {
+					//Oak Sheild
+					sheildVals = armor::sheild;
+					sheildQuality = materials::Oak;
+					createChar.armorQSheild = sheildTypeF(sheildQuality);
+					createChar.souls = createChar.souls - 1;
+					createChar.charArmor.sheildArmor = (static_cast<int>(sheildQuality)) + (static_cast<int>(sheildVals));
+					cout << "You bought an " << createChar.armorQSheild << " " << "Sheild, for 1 soul. It has " << createChar.charArmor.sheildArmor << " Armor." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.sheildArmor + createChar.charArmor.sheildArmor;
+					shopMenuSheilds(createChar);
+				}
+			}
+			break;
+		case 2:
+			if (createChar.souls == 0) {
+				cout << "You do not have enough for this purchace." << endl;
+				shopMenuSheilds(createChar);
+			}
+			else {
+				if (sheildQuality >= 4) {
+					cout << "You already own a Sheild of this quality or better." << endl;
+					shopMenuSheilds(createChar);
+				}
+				else {
+					//Copper Sheild
+					sheildVals = armor::sheild;
+					sheildQuality = materials::Copper;
+					createChar.armorQSheild = sheildTypeF(sheildQuality);
+					createChar.souls = createChar.souls - 5;
+					createChar.charArmor.sheildArmor = (static_cast<int>(sheildQuality)) + (static_cast<int>(sheildVals));
+					cout << "You bought an " << createChar.armorQSheild << " " << "Sheild, for 5 souls. It has " << createChar.charArmor.sheildArmor << " Armor." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.sheildArmor + createChar.charArmor.sheildArmor;
+					shopMenuSheilds(createChar);
+				}
+			}
+			break;
+		case 3:
+			if (createChar.souls == 0) {
+				cout << "You do not have enough for this purchace." << endl;
+				shopMenuSheilds(createChar);
+			}
+			else {
+				if (sheildQuality >= 5) {
+					cout << "You already own a Sheild of this quality or better." << endl;
+					shopMenuSheilds(createChar);
+				}
+				else {
+					//Bronze Sheild
+					sheildVals = armor::sheild;
+					sheildQuality = materials::Bronze;
+					createChar.armorQSheild = sheildTypeF(sheildQuality);
+					createChar.souls = createChar.souls - 10;
+					createChar.charArmor.sheildArmor = (static_cast<int>(sheildQuality)) + (static_cast<int>(sheildVals));
+					cout << "You bought an " << createChar.armorQSheild << " " << "Sheild, for 10 souls. It has " << createChar.charArmor.sheildArmor << " Armor." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.sheildArmor + createChar.charArmor.sheildArmor;
+					shopMenuSheilds(createChar);
+				}
+			}
+			break;
+
+		case 4:
+			if (createChar.souls == 0) {
+				cout << "You do not have enough for this purchace." << endl;
+				shopMenuSheilds(createChar);
+			}
+			else {
+				if (sheildQuality >= 6) {
+					cout << "You already own a Sheild of this quality or better." << endl;
+					shopMenuSheilds(createChar);
+				}
+				else {
+					//Iron Sheild
+					sheildVals = armor::sheild;
+					sheildQuality = materials::Iron;
+					createChar.armorQSheild = sheildTypeF(sheildQuality);
+					createChar.souls = createChar.souls - 15;
+					createChar.charArmor.sheildArmor = (static_cast<int>(sheildQuality)) + (static_cast<int>(sheildVals));
+					cout << "You bought an " << createChar.armorQSheild << " " << "Sheild, for 15 souls. It has " << createChar.charArmor.sheildArmor << " Armor." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.sheildArmor + createChar.charArmor.sheildArmor;
+					shopMenuSheilds(createChar);
+				}
+			}
+			break;
+		case 5:
+			if (createChar.souls == 0) {
+				cout << "You do not have enough for this purchace." << endl;
+				shopMenuSheilds(createChar);
+			}
+			else {
+				if (sheildQuality >= 7) {
+					cout << "You already own a Sheild of this quality or better." << endl;
+					shopMenuSheilds(createChar);
+				}
+				else {
+					//Steel Sheild
+					sheildVals = armor::sheild;
+					sheildQuality = materials::Steel;
+					createChar.armorQSheild = sheildTypeF(sheildQuality);
+					createChar.souls = createChar.souls - 25;
+					createChar.charArmor.sheildArmor = (static_cast<int>(sheildQuality)) + (static_cast<int>(sheildVals));
+					cout << "You bought an " << createChar.armorQSheild << " " << "Sheild, for 25 souls. It has " << createChar.charArmor.sheildArmor << " Armor." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.sheildArmor + createChar.charArmor.sheildArmor;
+					shopMenuSheilds(createChar);
+				}
+			}
+			break;
+		case 6:
+			if (createChar.souls == 0) {
+				cout << "You do not have enough for this purchace." << endl;
+				shopMenuSheilds(createChar);
+			}
+			else {
+				if (sheildQuality >= 10) {
+					cout << "You already own a Sheild of this quality or better." << endl;
+					shopMenuSheilds(createChar);
+				}
+				else {
+					//Mithril Sheild
+					sheildVals = armor::sheild;
+					sheildQuality = materials::Mithril;
+					createChar.armorQSheild = sheildTypeF(sheildQuality);
+					createChar.souls = createChar.souls - 50;
+					createChar.charArmor.sheildArmor = (static_cast<int>(sheildQuality)) + (static_cast<int>(sheildVals));
+					cout << "You bought a " << createChar.armorQSheild << " " << "Sheild, for 50 souls. It has " << createChar.charArmor.sheildArmor << " Armor." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.charArmor.armorTotal = createChar.charArmor.bodyArmor + createChar.charArmor.sheildArmor + createChar.charArmor.sheildArmor;
+					shopMenuSheilds(createChar);
+				}
+			}
+			break;
+		case 7:
+			shopMenu(createChar);
+			break;
+		}
+	}
+	return createChar;
+};
+
