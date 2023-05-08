@@ -32,8 +32,7 @@ void shopMenu(character createChar) {
 			shopMenuArmor(createChar);
 			break;
 		case 3:
-			shopMenu(createChar);
-			
+			shopMenuPotions(createChar);
 			break;
 		case 4:
 			pFirstScreen(createChar);
@@ -1061,3 +1060,73 @@ character shopMenuSheilds(character createChar) {
 	return createChar;
 };
 
+character shopMenuPotions(character createChar) {
+	int shopMenuChoice;
+
+	cout << "|==========================================================|" << endl;
+	cout << "|                       POTIONS MENU                       |" << endl;
+	cout << "|==========================================================|" << endl;
+	cout << "|            |         -------------         |    PRICE    |" << endl;
+	cout << "|      1     |        EXPERIENCE POTION      |   1 SOUL    |" << endl;
+	cout << "|      2     |        EXPERIENCE POTION      |   1 SOUL    |" << endl;
+	cout << "|      3     |        EXPERIENCE POTION      |   1 SOUL    |" << endl;
+	cout << "|      4     |        EXPERIENCE POTION      |   1 SOUL    |" << endl;
+	cout << "|      5     |        EXPERIENCE POTION      |   1 SOUL    |" << endl;
+	cout << "|      6     |        EXPERIENCE POTION      |   1 SOUL    |" << endl;
+	cout << "|      7     |           SHOP MENU           |             |" << endl;
+	cout << "|==========================================================|" << endl;
+	cin >> shopMenuChoice;
+
+	if ((cin.fail())) {
+		cout << pError << endl;
+		cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		shopMenuHelms(createChar);
+	}
+
+	bool pExists = std::find(std::begin(pArrayShopBuy), std::end(pArrayShopBuy), shopMenuChoice) != std::end(pArrayShopBuy);
+	if (pExists) {
+		switch (shopMenuChoice) {
+		case 1:
+			if (createChar.souls == 0) {
+				cout << "You do not have enough for this purchace." << endl;
+				shopMenu(createChar);
+			}
+			else {
+				if (helmQuality >= materials::Oak) {
+					cout << "You already own a helmet of this quality or better." << endl;
+					shopMenu(createChar);
+				}
+				else {
+					//expPot
+					createChar.souls = createChar.souls - 1;
+					cout << "You bought an Experience Potion granting 1000 experience for 1 soul." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.expChar += 1000;
+					shopMenu(createChar);
+				}
+			}
+			break;
+		case 2:
+			shopMenu(createChar);
+			break;
+		case 3:
+			shopMenu(createChar);
+			break;
+			
+		case 4:
+			shopMenu(createChar);
+			break;
+		case 5:
+			shopMenu(createChar);
+			break;
+		case 6:
+			shopMenu(createChar);
+			break;
+		case 7:
+			shopMenu(createChar);
+			break;
+		}
+	}
+	return createChar;
+};

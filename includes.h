@@ -20,7 +20,7 @@
 
 character characterCreation(string characterName, string swordQualityType, string weaponQualityType, materials swordQuality, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType, materials helmQuality, materials axeQuality, string axeQualityType, materials poleaxeQuality, string poleaxeQualityType);
 void printInfo(character createChar);
-character levelUpTask(character createChar, lvlUp lvlBonus);
+character levelUpTask(character createChar);
 string weaponTypeF(materials weaponQuality);
 string swordWeaponTypeF(materials swordQuality);
 string poleaxeWeaponTypeF(materials poleaxeWeaponQ);
@@ -40,4 +40,5 @@ character shopMenuAxes(character createChar);
 character shopMenuHelms (character createChar);
 character shopMenuBodyArmor(character createChar);
 character shopMenuSheilds(character createChar);
+character shopMenuPotions(character createChar);
 #endif //WARRIOR_RUMBLE_INCLUDES_H

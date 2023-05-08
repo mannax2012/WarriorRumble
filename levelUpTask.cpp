@@ -1,7 +1,8 @@
 #include "includes.h"
 using namespace std;
 
-character levelUpTask(character createChar, lvlUp lvlBonus){
+character levelUpTask(character createChar){
+    lvlUp lvlBonus;
     cout << "You have gained a level!!" << endl;
     cout << "Character Level: " << createChar.level + (createChar.expChar / 1000) << endl;
     cout << "Experience: " << createChar.expChar << endl;

@@ -6,7 +6,7 @@ int cExpGainTotal = 0;
 character characterCreation(string characterName, string swordQualityType, string weaponQualityType, materials swordQuality, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType, materials helmQuality, materials axeQuality, string axeQualityType, materials poleaxeQuality, string poleaxeQualityType) {
     character createChar;
     combat combatStats;
-
+    lvlUp lvlBonus;
     weaponQualityType = weaponTypeF(weaponQuality);
     swordQualityType = swordWeaponTypeF(swordQuality);
     axeQualityType = axeWeaponTypeF(axeQuality);
@@ -27,7 +27,7 @@ character characterCreation(string characterName, string swordQualityType, strin
 
     createChar.name = characterName;
     createChar.expChar += createChar.expChar + cExpGainTotal;
-    createChar.level = createChar.level + (createChar.expChar / 1000);
+    createChar.level = createChar.level + (createChar.expChar / 1000) - 1;
     createChar.strength = (rand() % 5 + 5);
     createChar.stamina = (rand() % 5 + 5);
     createChar.HPTOTAL = (2 * createChar.stamina);
