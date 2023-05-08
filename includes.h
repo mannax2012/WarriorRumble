@@ -20,7 +20,7 @@
 
 character characterCreation(string characterName, string swordQualityType, string weaponQualityType, materials swordQuality, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType, materials helmQuality, materials axeQuality, string axeQualityType, materials poleaxeQuality, string poleaxeQualityType);
 void printInfo(character createChar);
-character levelUpTask(character createChar, lvlUp lvlBonus, string weaponQualityType, string weaponType);
+character levelUpTask(character createChar, lvlUp lvlBonus);
 string weaponTypeF(materials weaponQuality);
 string swordWeaponTypeF(materials swordQuality);
 string poleaxeWeaponTypeF(materials poleaxeWeaponQ);
@@ -34,9 +34,9 @@ void challengeMenu(character createChar);
 void shopMenuWeapons(character createChar);
 void shopMenu(character createChar);
 void shopMenuArmor(character createChar);
-void shopMenuSwords(character createChar);
+character shopMenuSwords(character createChar);
 //void shopMenuPoleaxes(character createChar);
-void shopMenuAxes(character createChar);
+character shopMenuAxes(character createChar);
 character shopMenuHelms (character createChar);
 character shopMenuBodyArmor(character createChar);
 character shopMenuSheilds(character createChar);

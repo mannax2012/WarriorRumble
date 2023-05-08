@@ -38,7 +38,6 @@ int main() {
             _tprintf(TEXT("SetConsoleTitle failed (%d)\n"), GetLastError());
         }
     };
-    cout << sheildQualityType << endl;
     system("pause");
     string characterName;
     cout << "Welcome to Warrior Rumble! Please enter your Warrior's name." << endl;
@@ -57,8 +56,13 @@ int main() {
 
 void pFirstScreen(character createChar) {
     int menuOptionChoice;
-    cout << "What would you like to do?" << endl;
-    cout << "(1) Show Stats (2) Rumble Shop (3) Challenge Menu" << endl;
+    cout << "|==========================================================|" << endl;
+    cout << "|                        Main Menu                         |" << endl;
+    cout << "|==========================================================|" << endl;
+    cout << "|      1     |         CHARACTER SHEET       |             |" << endl;
+    cout << "|      2     |          RUMBLE SHOP          |             |" << endl;
+    cout << "|      3     |         CHALLENGE MENU        |             |" << endl;
+    cout << "|==========================================================|" << endl;
     cin >> menuOptionChoice;
 
     
@@ -94,20 +98,30 @@ void pFirstScreen(character createChar) {
 void printInfo(character createChar) {
     
     weaponQualityType = weaponTypeF(weaponQuality);
+    swordQualityType = swordWeaponTypeF(swordQuality);
+    axeQualityType = axeWeaponTypeF(axeQuality);
+    poleaxeQualityType = poleaxeWeaponTypeF(poleaxeQuality);
     weaponType = weaponChoiceF(weaponChoice);
+    helmQualityType = helmTypeF(helmQuality);
+    armorQualityType = armorTypeF(armorQuality);
+    sheildQualityType = sheildTypeF(sheildQuality);
 
-    cout << "Character Name: " << createChar.name << endl;
-    cout << "Character Level: " << createChar.level + (createChar.expChar / 1000) << endl;
-    cout << "Experience: " << createChar.expChar << endl;
-    cout << "Health Points: " << createChar.health << " / " << createChar.HPTOTAL << endl;
-    cout << "Rage: " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
-    cout << "Strength: " << createChar.strength << endl;
-    cout << "Stamina: " << createChar.stamina << endl;
-    cout << "Armor Rating: " << createChar.charArmor.armorTotal << endl;
-    cout << "Weapon Type: " << weaponQualityType  <<  createChar.swordWeaponQ << createChar.axeWeaponQ << createChar.poleaxeWeaponQ << " " << createChar.weaponT << endl;
-    cout << "Helmet Type: " << createChar.armorQHelm << " " << "Helmet" << endl;
-    cout << "Body Armor Type: " << createChar.armorQBody << " " << "Body Amor" << endl;
-    cout << "Sheild Type: " << createChar.armorQSheild << " " << "Sheild" << endl;
-    cout << "Attack Power: " << createChar.weaponAttack << endl;
-    cout << "Souls: " << createChar.souls << endl;
+    cout << "|==========================================================|" << endl;
+    cout << "|                     CHARACTER SHEET                      |" << endl;
+    cout << "|==========================================================|" << endl;
+    cout << "|     NAME:       |           " << createChar.name << endl;
+    cout << "|     LEVEL:      |           " << (createChar.level + (createChar.expChar / 1000)) + 1 << endl;
+    cout << "|     EXPERIENCE: |           " << createChar.expChar << " / " << createChar.expChar + 1000<< endl;
+    cout << "|     HEALTH:     |           " << createChar.health << " / " << createChar.HPTOTAL << endl;
+    cout << "|     RAGE:       |           " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
+    cout << "|     STRENGTH:   |           " << createChar.strength << endl;
+    cout << "|     STAMINA:    |           " << createChar.stamina << endl;
+    cout << "|     ARMOR:      |           " << createChar.charArmor.armorTotal << endl;
+    cout << "|     ATTACK:     |           " << createChar.weaponAttack << endl;
+    cout << "|     SOULS:      |           " << createChar.souls << endl;
+    cout << "|     WEAPON:     |           " << createChar.weaponQ << createChar.swordWeaponQ << " " << createChar.weaponT << endl;
+    cout << "|     HELMET:     |           " << createChar.armorQHelm << " " << "Helmet" << endl;
+    cout << "|     BODY ARMOR: |           " << createChar.armorQBody << " " << "Body Amor" << endl;
+    cout << "|     SHEILD:     |           " << createChar.armorQSheild << " " << "Sheild" << endl;
+    cout << "|==========================================================|" << endl;
 }
