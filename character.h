@@ -15,7 +15,12 @@ typedef struct lvlUp {
 typedef struct combat {
 
     int totalHealthDamage = 0,
-        rageRemaining = 0;
+        rageRemaining = 0,
+        swordAttackDamage,
+        axeAttackDamage,
+        poleaxeAttackDamage,
+        jabAttackDamage,
+        slashAttackDamage;
 } combat;
 typedef struct armorval {
     int armorTotal = 0,
@@ -27,6 +32,9 @@ typedef struct character {
 
     string name,
         weaponQ,
+        swordWeaponQ,
+        axeWeaponQ,
+        poleaxeWeaponQ,
         weaponT,
         armorhelm,
         armorBody,
@@ -49,6 +57,7 @@ typedef struct character {
     combat combatStats;
     armorval charArmor;
     materials valsUp;
+    weapons pWeapons;
 } character;
 
 #endif //WARRIOR_RUMBLE_CHARACTER_H

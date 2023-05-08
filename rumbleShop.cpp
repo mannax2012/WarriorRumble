@@ -58,7 +58,7 @@ void shopMenuWeapons(character createChar) {
 			shopMenuAxes(createChar);
 			break;
 		case 3:
-			shopMenuPoleaxes(createChar);
+			//shopMenuPoleaxes(createChar);
 			break;
 		case 4:
 			shopMenu(createChar);
@@ -95,18 +95,25 @@ void shopMenuSwords(character createChar) {
 				shopMenuSwords(createChar);
 			}
 			else {
-				if (weaponQuality == materials::Oak) {
+				if (swordQuality >= 3) {
 					cout << "You already own a weapon of this quality." << endl;
 					shopMenuSwords(createChar);
 				}
 				else {
 					//Oak Sword
 					weaponChoice = weapons::sword;
-					weaponQuality = materials::Oak;
-					createChar.weaponQ = weaponTypeF(weaponQuality);
+					swordQuality = materials::Oak;
+					axeQuality = materials::No;
+					poleaxeQuality = materials::No;
+					createChar.swordWeaponQ = swordWeaponTypeF(swordQuality);
+					createChar.axeWeaponQ = axeWeaponTypeF(axeQuality);
+					createChar.poleaxeWeaponQ = poleaxeWeaponTypeF(axeQuality);
 					createChar.weaponT = weaponChoiceF(weaponChoice);
 					createChar.souls = createChar.souls - 1;
-					cout << "You bought an " << createChar.weaponQ << " " << createChar.weaponT << " for 1 soul. \nYou have " << createChar.souls << " remaining." << endl;
+					createChar.combatStats.swordAttackDamage = (static_cast<int>(swordQuality)) + (static_cast<int>(weaponChoice));
+					cout << "You bought an " << createChar.swordWeaponQ << " " << createChar.weaponT <<  " for 1 soul. It has " << createChar.combatStats.swordAttackDamage << " Attack Power." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.weaponAttack = (2 * createChar.strength) + createChar.combatStats.swordAttackDamage;
 					shopMenuSwords(createChar);
 				}
 			}
@@ -124,11 +131,16 @@ void shopMenuSwords(character createChar) {
 				else {
 					//Copper Sword
 					weaponChoice = weapons::sword;
-					weaponQuality = materials::Copper;
-					createChar.weaponQ = weaponTypeF(weaponQuality);
+					swordQuality = materials::Copper;
+					axeQuality = materials::No;
+					poleaxeQuality = materials::No;
+					createChar.swordWeaponQ = weaponTypeF(swordQuality);
 					createChar.weaponT = weaponChoiceF(weaponChoice);
 					createChar.souls = createChar.souls - 5;
-					cout << "You bought an " << createChar.weaponQ << " " << createChar.weaponT << " for 5 souls. \nYou have " << createChar.souls << " remaining." << endl;
+					createChar.combatStats.swordAttackDamage = (static_cast<int>(swordQuality)) + (static_cast<int>(weaponChoice));
+					cout << "You bought an " << createChar.swordWeaponQ << " " << createChar.weaponT << " for 5 souls. It has " << createChar.combatStats.swordAttackDamage << " Attack Power." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.weaponAttack = (2 * createChar.strength) + createChar.combatStats.swordAttackDamage;
 					shopMenuSwords(createChar);
 				}
 			}
@@ -139,18 +151,23 @@ void shopMenuSwords(character createChar) {
 				shopMenuSwords(createChar);
 			}
 			else {
-				if (weaponQuality == materials::Bronze) {
+				if (swordQuality >= 5) {
 					cout << "You already own a weapon of this quality." << endl;
 					shopMenuSwords(createChar);
 				}
 				else {
 					//Bronze Sword
 					weaponChoice = weapons::sword;
-					weaponQuality = materials::Bronze;
-					createChar.weaponQ = weaponTypeF(weaponQuality);
+					swordQuality = materials::Bronze;
+					axeQuality = materials::No;
+					poleaxeQuality = materials::No;
+					createChar.swordWeaponQ = swordWeaponTypeF(swordQuality);
 					createChar.weaponT = weaponChoiceF(weaponChoice);
 					createChar.souls = createChar.souls - 10;
-					cout << "You bought an " << createChar.weaponQ << " " << createChar.weaponT << " for 10 souls. \nYou have " << createChar.souls << " remaining." << endl;
+					createChar.combatStats.swordAttackDamage = (static_cast<int>(swordQuality)) + (static_cast<int>(weaponChoice));
+					cout << "You bought an " << createChar.swordWeaponQ << " " << createChar.weaponT << " for 10 souls. It has " << createChar.combatStats.swordAttackDamage << " Attack Power." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.weaponAttack = (2 * createChar.strength) + createChar.combatStats.swordAttackDamage;
 					shopMenuSwords(createChar);
 				}
 			}
@@ -161,18 +178,23 @@ void shopMenuSwords(character createChar) {
 				shopMenuSwords(createChar);
 			}
 			else {
-				if (weaponQuality == materials::Iron) {
+				if (swordQuality >= 6) {
 					cout << "You already own a weapon of this quality." << endl;
 					shopMenuSwords(createChar);
 				}
 				else {
 					//Iron Sword
 					weaponChoice = weapons::sword;
-					weaponQuality = materials::Iron;
-					createChar.weaponQ = weaponTypeF(weaponQuality);
+					swordQuality = materials::Iron;
+					axeQuality = materials::No;
+					poleaxeQuality = materials::No;
+					createChar.swordWeaponQ = weaponTypeF(swordQuality);
 					createChar.weaponT = weaponChoiceF(weaponChoice);
 					createChar.souls = createChar.souls - 15;
-					cout << "You bought an " << createChar.weaponQ << " " << createChar.weaponT << " for 15 souls. \nYou have " << createChar.souls << " remaining." << endl;
+					createChar.combatStats.swordAttackDamage = (static_cast<int>(swordQuality)) + (static_cast<int>(weaponChoice));
+					cout << "You bought an " << createChar.swordWeaponQ << " " << createChar.weaponT << " for 15 souls. It has " << createChar.combatStats.swordAttackDamage << " Attack Power." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.weaponAttack = (2 * createChar.strength) + createChar.combatStats.swordAttackDamage;
 					shopMenuSwords(createChar);
 				}
 			}
@@ -183,18 +205,24 @@ void shopMenuSwords(character createChar) {
 				shopMenuSwords(createChar);
 			}
 			else {
-				if (weaponQuality == materials::Steel) {
+				if (swordQuality >= 7) {
 					cout << "You already own a weapon of this quality." << endl;
 					shopMenuSwords(createChar);
 				}
 				else {
 					//Steel Sword
 					weaponChoice = weapons::sword;
-					weaponQuality = materials::Steel;
-					createChar.weaponQ = weaponTypeF(weaponQuality);
+					weaponQuality = materials::No;
+					swordQuality = materials::Steel;
+					axeQuality = materials::No;
+					poleaxeQuality = materials::No;
+					createChar.swordWeaponQ = weaponTypeF(swordQuality);
 					createChar.weaponT = weaponChoiceF(weaponChoice);
 					createChar.souls = createChar.souls - 25;
-					cout << "You bought an " << createChar.weaponQ << " " << createChar.weaponT << " for 25 souls. \nYou have " << createChar.souls << " remaining." << endl;
+					createChar.combatStats.swordAttackDamage = (static_cast<int>(swordQuality)) + (static_cast<int>(weaponChoice));
+					cout << "You bought an " << createChar.swordWeaponQ << " " << createChar.weaponT << " for 25 souls. It has " << createChar.combatStats.swordAttackDamage << " Attack Power." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.weaponAttack = (2 * createChar.strength) + createChar.combatStats.swordAttackDamage;
 					shopMenuSwords(createChar);
 				}
 			}
@@ -205,18 +233,23 @@ void shopMenuSwords(character createChar) {
 				shopMenuSwords(createChar);
 			}
 			else {
-				if (weaponQuality == materials::Mithril) {
+				if (swordQuality >= 10) {
 					cout << "You already own a weapon of this quality." << endl;
 					shopMenuSwords(createChar);
 				}
 				else {
 					//Mithril Sword
 					weaponChoice = weapons::sword;
-					weaponQuality = materials::Mithril;
-					createChar.weaponQ = weaponTypeF(weaponQuality);
+					swordQuality = materials::Mithril;
+					axeQuality = materials::No;
+					poleaxeQuality = materials::No;
+					createChar.swordWeaponQ = swordWeaponTypeF(swordQuality);
 					createChar.weaponT = weaponChoiceF(weaponChoice);
 					createChar.souls = createChar.souls - 50;
-					cout << "You bought an " << createChar.weaponQ << " " << createChar.weaponT << " for 50 souls. \nYou have " << createChar.souls << " remaining." << endl;
+					createChar.combatStats.swordAttackDamage = (static_cast<int>(swordQuality)) + (static_cast<int>(weaponChoice));
+					cout << "You bought an " << createChar.swordWeaponQ << " " << createChar.weaponT << " for 50 souls. It has " << createChar.combatStats.swordAttackDamage << " Attack Power." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.weaponAttack = (2 * createChar.strength) + createChar.combatStats.swordAttackDamage;
 					shopMenuSwords(createChar);
 				}
 			}
@@ -256,18 +289,23 @@ void shopMenuAxes(character createChar) {
 				shopMenuAxes(createChar);
 			}
 			else {
-				if (weaponQuality == materials::Oak) {
+				if (axeQuality >= materials::Oak) {
 					cout << "You already own a weapon of this quality." << endl;
 					shopMenuAxes(createChar);
 				}
 				else {
 					//Oak Axe
 					weaponChoice = weapons::axe;
-					weaponQuality = materials::Oak;
-					createChar.weaponQ = weaponTypeF(weaponQuality);
+					swordQuality = materials::No;
+					axeQuality = materials::Oak;
+					poleaxeQuality = materials::No;
+					createChar.axeWeaponQ = axeWeaponTypeF(axeQuality);
 					createChar.weaponT = weaponChoiceF(weaponChoice);
 					createChar.souls = createChar.souls - 1;
-					cout << "You bought an " << createChar.weaponQ << " " << createChar.weaponT << " for 1 soul. \nYou have " << createChar.souls << " remaining." << endl;
+					createChar.combatStats.axeAttackDamage = (static_cast<int>(axeQuality)) + (static_cast<int>(weaponChoice));
+					cout << "You bought an " << createChar.axeWeaponQ << " " << createChar.weaponT << " for 1 soul. It has " << createChar.combatStats.axeAttackDamage << " Attack Power." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.weaponAttack = (2 * createChar.strength) + createChar.combatStats.axeAttackDamage;
 					shopMenuAxes(createChar);
 				}
 			}
@@ -275,21 +313,26 @@ void shopMenuAxes(character createChar) {
 		case 2:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
-				shopMenuAxes(createChar);
+				shopMenuSwords(createChar);
 			}
 			else {
-				if (weaponQuality == materials::Copper) {
+				if (axeQuality >= materials::Copper) {
 					cout << "You already own a weapon of this quality." << endl;
 					shopMenuAxes(createChar);
 				}
 				else {
 					//Copper Axe
 					weaponChoice = weapons::axe;
-					weaponQuality = materials::Copper;
-					createChar.weaponQ = weaponTypeF(weaponQuality);
+					swordQuality = materials::No;
+					axeQuality = materials::Copper;
+					poleaxeQuality = materials::No;
+					createChar.axeWeaponQ = weaponTypeF(axeQuality);
 					createChar.weaponT = weaponChoiceF(weaponChoice);
 					createChar.souls = createChar.souls - 5;
-					cout << "You bought an " << createChar.weaponQ << " " << createChar.weaponT << " for 5 souls. \nYou have " << createChar.souls << " remaining." << endl;
+					createChar.combatStats.axeAttackDamage = (static_cast<int>(axeQuality)) + (static_cast<int>(weaponChoice));
+					cout << "You bought an " << createChar.axeWeaponQ << " " << createChar.weaponT << " for 5 souls. It has " << createChar.combatStats.axeAttackDamage << " Attack Power." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.weaponAttack = (2 * createChar.strength) + createChar.combatStats.axeAttackDamage;
 					shopMenuAxes(createChar);
 				}
 			}
@@ -300,18 +343,23 @@ void shopMenuAxes(character createChar) {
 				shopMenuAxes(createChar);
 			}
 			else {
-				if (weaponQuality == materials::Bronze) {
+				if (axeQuality >= materials::Bronze) {
 					cout << "You already own a weapon of this quality." << endl;
 					shopMenuAxes(createChar);
 				}
 				else {
 					//Bronze Axe
 					weaponChoice = weapons::axe;
-					weaponQuality = materials::Bronze;
-					createChar.weaponQ = weaponTypeF(weaponQuality);
+					swordQuality = materials::No;
+					axeQuality = materials::Bronze;
+					poleaxeQuality = materials::No;
+					createChar.axeWeaponQ = weaponTypeF(axeQuality);
 					createChar.weaponT = weaponChoiceF(weaponChoice);
 					createChar.souls = createChar.souls - 10;
-					cout << "You bought an " << createChar.weaponQ << " " << createChar.weaponT << " for 10 souls. \nYou have " << createChar.souls << " remaining." << endl;
+					createChar.combatStats.axeAttackDamage = (static_cast<int>(axeQuality)) + (static_cast<int>(weaponChoice));
+					cout << "You bought an " << createChar.axeWeaponQ << " " << createChar.weaponT << " for 10 souls. It has " << createChar.combatStats.axeAttackDamage << " Attack Power." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.weaponAttack = (2 * createChar.strength) + createChar.combatStats.axeAttackDamage;
 					shopMenuAxes(createChar);
 				}
 			}
@@ -322,18 +370,23 @@ void shopMenuAxes(character createChar) {
 				shopMenuAxes(createChar);
 			}
 			else {
-				if (weaponQuality == materials::Iron) {
+				if (axeQuality >= materials::Iron) {
 					cout << "You already own a weapon of this quality." << endl;
 					shopMenuAxes(createChar);
 				}
 				else {
 					//Iron Axe
 					weaponChoice = weapons::axe;
-					weaponQuality = materials::Iron;
-					createChar.weaponQ = weaponTypeF(weaponQuality);
+					swordQuality = materials::No;
+					axeQuality = materials::Iron;
+					poleaxeQuality = materials::No;
+					createChar.axeWeaponQ = weaponTypeF(axeQuality);
 					createChar.weaponT = weaponChoiceF(weaponChoice);
 					createChar.souls = createChar.souls - 15;
-					cout << "You bought an " << createChar.weaponQ << " " << createChar.weaponT << " for 15 souls. \nYou have " << createChar.souls << " remaining." << endl;
+					createChar.combatStats.axeAttackDamage = (static_cast<int>(axeQuality)) + (static_cast<int>(weaponChoice));
+					cout << "You bought an " << createChar.axeWeaponQ << " " << createChar.weaponT << " for 15 souls. It has " << createChar.combatStats.axeAttackDamage << " Attack Power." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.weaponAttack = (2 * createChar.strength) + createChar.combatStats.axeAttackDamage;
 					shopMenuAxes(createChar);
 				}
 			}
@@ -341,21 +394,26 @@ void shopMenuAxes(character createChar) {
 		case 5:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
-				shopMenuAxes(createChar);
+				shopMenuSwords(createChar);
 			}
 			else {
-				if (weaponQuality == materials::Steel) {
+				if (axeQuality >= materials::Steel) {
 					cout << "You already own a weapon of this quality." << endl;
-					shopMenuAxes(createChar);
+					shopMenuSwords(createChar);
 				}
 				else {
-					//Steel Axe
+					//Steel
 					weaponChoice = weapons::axe;
-					weaponQuality = materials::Steel;
-					createChar.weaponQ = weaponTypeF(weaponQuality);
+					swordQuality = materials::No;
+					axeQuality = materials::Steel;
+					poleaxeQuality = materials::No;
+					createChar.axeWeaponQ = weaponTypeF(axeQuality);
 					createChar.weaponT = weaponChoiceF(weaponChoice);
-					createChar.souls = createChar.souls - 25;
-					cout << "You bought an " << createChar.weaponQ << " " << createChar.weaponT << " for 25 souls. \nYou have " << createChar.souls << " remaining." << endl;
+					createChar.souls = createChar.souls - 15;
+					createChar.combatStats.axeAttackDamage = (static_cast<int>(axeQuality)) + (static_cast<int>(weaponChoice));
+					cout << "You bought an " << createChar.axeWeaponQ << " " << createChar.weaponT << " for 15 souls. It has " << createChar.combatStats.axeAttackDamage << " Attack Power." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.weaponAttack = (2 * createChar.strength) + createChar.combatStats.axeAttackDamage;
 					shopMenuAxes(createChar);
 				}
 			}
@@ -363,21 +421,26 @@ void shopMenuAxes(character createChar) {
 		case 6:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
-				shopMenuAxes(createChar);
+				shopMenuSwords(createChar);
 			}
 			else {
-				if (weaponQuality == materials::Mithril) {
+				if (axeQuality >= materials::Mithril) {
 					cout << "You already own a weapon of this quality." << endl;
-					shopMenuAxes(createChar);
+					shopMenuSwords(createChar);
 				}
 				else {
-					//Mithril Axe
+					//Mithril
 					weaponChoice = weapons::axe;
-					weaponQuality = materials::Mithril;
-					createChar.weaponQ = weaponTypeF(weaponQuality);
+					swordQuality = materials::No;
+					axeQuality = materials::Mithril;
+					poleaxeQuality = materials::No;
+					createChar.axeWeaponQ = weaponTypeF(axeQuality);
 					createChar.weaponT = weaponChoiceF(weaponChoice);
-					createChar.souls = createChar.souls - 50;
-					cout << "You bought an " << createChar.weaponQ << " " << createChar.weaponT << " for 50 souls. \nYou have " << createChar.souls << " remaining." << endl;
+					createChar.souls = createChar.souls - 15;
+					createChar.combatStats.axeAttackDamage = (static_cast<int>(axeQuality)) + (static_cast<int>(weaponChoice));
+					cout << "You bought an " << createChar.axeWeaponQ << " " << createChar.weaponT << " for 15 souls. It has " << createChar.combatStats.axeAttackDamage << " Attack Power." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.weaponAttack = (2 * createChar.strength) + createChar.combatStats.axeAttackDamage;
 					shopMenuAxes(createChar);
 				}
 			}
@@ -389,6 +452,7 @@ void shopMenuAxes(character createChar) {
 	}
 };
 
+/*
 void shopMenuPoleaxes(character createChar) {
 	int shopMenuChoice;
 	cout << "- Poleaxes Menu -" << endl;
@@ -549,7 +613,7 @@ void shopMenuPoleaxes(character createChar) {
 		}
 	}
 };
-
+*/
 void shopMenuArmor(character createChar) {
 				int shopMenuChoice;
 				cout << "- Armor Menu -" << endl;

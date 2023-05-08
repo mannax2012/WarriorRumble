@@ -2,6 +2,9 @@
 using namespace std;
 weapons weaponChoice = weapons::unarmed;
 materials weaponQuality = materials::Basic;
+materials swordQuality = materials::No;
+materials axeQuality = materials::No;
+materials poleaxeQuality = materials::No;
 materials helmQuality = materials::No;
 materials armorQuality = materials::No;
 materials sheildQuality = materials::No;
@@ -9,6 +12,9 @@ armor helmVals = armor::noAmor;
 armor armorVals = armor::noAmor;
 armor sheildVals = armor::noAmor;
 string weaponQualityType = weaponTypeF(weaponQuality);
+string swordQualityType = swordWeaponTypeF(swordQuality);
+string axeQualityType = swordWeaponTypeF(axeQuality);
+string poleaxeQualityType = swordWeaponTypeF(poleaxeQuality);
 string helmQualityType = helmTypeF(helmQuality);
 string armorQualityType = armorTypeF(armorQuality);
 string sheildQualityType = sheildTypeF(sheildQuality);
@@ -39,7 +45,7 @@ int main() {
     cout << "Enter Name: ";
     cin >> characterName;
     cout << "You have just taken your first steps to becoming a great Warrior. " << characterName << "! Welcome to the Warrior RUMBLE!!" << endl;
-    character player = characterCreation(characterName, armorQualityType, helmQualityType, sheildQualityType, weaponQualityType, weaponType, helmQuality);
+    character player = characterCreation(characterName, swordQualityType, weaponQualityType, swordQuality, weaponType, helmQualityType, armorQualityType, sheildQualityType, helmQuality, axeQuality, axeQualityType, poleaxeQuality, poleaxeQualityType);
     
     printInfo(player);
 
@@ -89,9 +95,6 @@ void printInfo(character createChar) {
     
     weaponQualityType = weaponTypeF(weaponQuality);
     weaponType = weaponChoiceF(weaponChoice);
-    helmQualityType = helmTypeF(helmQuality);
-    armorQualityType = armorTypeF(armorQuality);
-    sheildQualityType = sheildTypeF(sheildQuality);
 
     cout << "Character Name: " << createChar.name << endl;
     cout << "Character Level: " << createChar.level + (createChar.expChar / 1000) << endl;
@@ -101,7 +104,7 @@ void printInfo(character createChar) {
     cout << "Strength: " << createChar.strength << endl;
     cout << "Stamina: " << createChar.stamina << endl;
     cout << "Armor Rating: " << createChar.charArmor.armorTotal << endl;
-    cout << "Weapon Type: " << createChar.weaponQ << " " << createChar.weaponT << endl;
+    cout << "Weapon Type: " << weaponQualityType  <<  createChar.swordWeaponQ << createChar.axeWeaponQ << createChar.poleaxeWeaponQ << " " << createChar.weaponT << endl;
     cout << "Helmet Type: " << createChar.armorQHelm << " " << "Helmet" << endl;
     cout << "Body Armor Type: " << createChar.armorQBody << " " << "Body Amor" << endl;
     cout << "Sheild Type: " << createChar.armorQSheild << " " << "Sheild" << endl;
