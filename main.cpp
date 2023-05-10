@@ -110,8 +110,8 @@ void printInfo(character createChar) {
     cout << "|                     CHARACTER SHEET                      |" << endl;
     cout << "|==========================================================|" << endl;
     cout << "|     NAME:       |           " << createChar.name << endl;
-    cout << "|     LEVEL:      |           " << (createChar.level + (createChar.expChar / 1000)) + 1 << endl;
-    cout << "|     EXPERIENCE: |           " << createChar.expChar << " / " << createChar.expChar + 1000<< endl;
+    cout << "|     LEVEL:      |           " << createChar.level + 1 << endl;
+    cout << "|     EXPERIENCE: |           " << createChar.expChar << " / " << createChar.expChar + 1000 << endl;
     cout << "|     HEALTH:     |           " << createChar.health << " / " << createChar.HPTOTAL << endl;
     cout << "|     RAGE:       |           " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
     cout << "|     STRENGTH:   |           " << createChar.strength << endl;

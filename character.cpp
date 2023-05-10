@@ -7,6 +7,7 @@ character characterCreation(string characterName, string swordQualityType, strin
     character createChar;
     combat combatStats;
     lvlUp lvlBonus;
+    
     weaponQualityType = weaponTypeF(weaponQuality);
     swordQualityType = swordWeaponTypeF(swordQuality);
     axeQualityType = axeWeaponTypeF(axeQuality);
@@ -26,13 +27,12 @@ character characterCreation(string characterName, string swordQualityType, strin
     createChar.poleaxeWeaponQ = poleaxeQualityType;
 
     createChar.name = characterName;
-    createChar.expChar += createChar.expChar + cExpGainTotal;
-    createChar.level = createChar.level + (createChar.expChar / 1000) - 1;
+    createChar.expChar += cExpGainTotal;
+    createChar.level += (createChar.expChar / 1000);
     createChar.strength = (rand() % 5 + 5);
     createChar.stamina = (rand() % 5 + 5);
     createChar.HPTOTAL = (2 * createChar.stamina);
-    createChar.RAGETOTAL = 100;
-    createChar.rage = createChar.RAGETOTAL - combatStats.rageRemaining;
+    createChar.rage = createChar.RAGETOTAL - createChar.combatStats.rageUsed;
     createChar.health = createChar.HPTOTAL - combatStats.totalHealthDamage;
     createChar.charArmor.helmArmor = (static_cast<int>(helmQuality)) + (static_cast<int>(helmVals));
     createChar.charArmor.bodyArmor = (static_cast<int>(armorQuality)) + (static_cast<int>(armorVals));
@@ -42,7 +42,9 @@ character characterCreation(string characterName, string swordQualityType, strin
     createChar.combatStats.axeAttackDamage = (static_cast<int>(axeQuality)) + (static_cast<int>(weaponChoice));
     createChar.combatStats.poleaxeAttackDamage = (static_cast<int>(poleaxeQuality)) + (static_cast<int>(weaponChoice));
     createChar.weaponAttack = (2 * createChar.strength) + (static_cast<int>(weaponChoice));
-    createChar.souls = 200;
+    createChar.souls = 2000;
+    levelUpCheck(createChar);
+   
     return createChar;
 }
 

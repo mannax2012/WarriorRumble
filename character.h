@@ -14,8 +14,9 @@ typedef struct lvlUp {
 
 typedef struct combat {
 
-    int totalHealthDamage = 0,
+    int totalHealthDamage = 10,
         rageRemaining = 0,
+        rageUsed = 100,
         swordAttackDamage,
         axeAttackDamage,
         poleaxeAttackDamage,
@@ -50,9 +51,10 @@ typedef struct character {
         strength = 0,
         stamina = 0,
         HPTOTAL,
-        RAGETOTAL,
+        RAGETOTAL = 100,
         weaponAttack,
-        souls = 0;
+        souls = 0,
+        oldLevel;
     lvlUp lvlBonus;
     combat combatStats;
     armorval charArmor;

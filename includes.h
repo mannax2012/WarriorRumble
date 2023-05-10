@@ -41,4 +41,5 @@ character shopMenuHelms (character createChar);
 character shopMenuBodyArmor(character createChar);
 character shopMenuSheilds(character createChar);
 character shopMenuPotions(character createChar);
+character levelUpCheck(character createChar);
 #endif //WARRIOR_RUMBLE_INCLUDES_H

@@ -1068,11 +1068,11 @@ character shopMenuPotions(character createChar) {
 	cout << "|==========================================================|" << endl;
 	cout << "|            |         -------------         |    PRICE    |" << endl;
 	cout << "|      1     |        EXPERIENCE POTION      |   1 SOUL    |" << endl;
-	cout << "|      2     |        EXPERIENCE POTION      |   1 SOUL    |" << endl;
-	cout << "|      3     |        EXPERIENCE POTION      |   1 SOUL    |" << endl;
-	cout << "|      4     |        EXPERIENCE POTION      |   1 SOUL    |" << endl;
-	cout << "|      5     |        EXPERIENCE POTION      |   1 SOUL    |" << endl;
-	cout << "|      6     |        EXPERIENCE POTION      |   1 SOUL    |" << endl;
+	cout << "|      2     |          HEALTH POTION        |  10 SOULS   |" << endl;
+	cout << "|      3     |           RAGE POTION         |   5 SOULS   |" << endl;
+	cout << "|      4     |         LARGE EXP POTION      |  10 SOULS    |" << endl;
+	cout << "|      5     |        FULL HEALTH POTION     |  50 SOUL    |" << endl;
+	cout << "|      6     |        FULL RAGE POTION       |  25 SOUL    |" << endl;
 	cout << "|      7     |           SHOP MENU           |             |" << endl;
 	cout << "|==========================================================|" << endl;
 	cin >> shopMenuChoice;
@@ -1093,27 +1093,61 @@ character shopMenuPotions(character createChar) {
 				shopMenu(createChar);
 			}
 			else {
-				if (helmQuality >= materials::Oak) {
-					cout << "You already own a helmet of this quality or better." << endl;
-					shopMenu(createChar);
-				}
-				else {
-					//expPot
-					createChar.souls = createChar.souls - 1;
-					cout << "You bought an Experience Potion granting 1000 experience for 1 soul." << endl;
-					cout << "You have " << createChar.souls << " remaining." << endl;
-					createChar.expChar += 1000;
-					shopMenu(createChar);
-				}
+				//expPot
+				createChar.souls = createChar.souls - 50;
+				cout << "You bought an Experience Potion granting 500 experience for 50 souls." << endl;
+				cout << "You have " << createChar.souls << " remaining." << endl;
+				createChar.expChar += 500;
+				createChar.level += (createChar.expChar / 1000);
+				levelUpCheck(createChar);
+				shopMenu(createChar);
 			}
 			break;
 		case 2:
-			shopMenu(createChar);
-			break;
+			if (createChar.souls == 0) {
+				cout << "You do not have enough for this purchace." << endl;
+				shopMenu(createChar);
+			}
+			else {
+				if (createChar.health = createChar.combatStats.totalHealthDamage - createChar.HPTOTAL) {
+					cout << "Health already at max. " << createChar.health << " / " << createChar.HPTOTAL << endl;
+					shopMenu(createChar);
+				}
+				else {
+					//HealthPot
+					createChar.souls = createChar.souls - 1;
+					cout << "You bought a Health Potion granting 10 Health for 1 soul." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					createChar.health = createChar.HPTOTAL + 10;
+					if (createChar.health > createChar.HPTOTAL) {
+						createChar.health = createChar.HPTOTAL;
+					}
+					shopMenu(createChar);
+				}
+			}
+				break;
 		case 3:
-			shopMenu(createChar);
-			break;
-			
+			if (createChar.souls == 0) {
+				cout << "You do not have enough for this purchace." << endl;
+				shopMenu(createChar);
+			}
+			else {
+				if (createChar.combatStats.rageUsed = 0) {
+					cout << "Rage already at max. " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
+					shopMenu(createChar);
+				}
+				else {
+					//RAGEPot
+					createChar.souls = createChar.souls - 5;
+					createChar.combatStats.rageUsed = -10;
+					createChar.rage = createChar.RAGETOTAL - createChar.combatStats.rageUsed;
+					cout << "You bought a Rage Potion granting 100 Rage for 5 souls. " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+
+					shopMenu(createChar);
+					break;
+				}
+			}
 		case 4:
 			shopMenu(createChar);
 			break;
@@ -1126,7 +1160,7 @@ character shopMenuPotions(character createChar) {
 		case 7:
 			shopMenu(createChar);
 			break;
+			}
+			return createChar;
 		}
-	}
-	return createChar;
 };
