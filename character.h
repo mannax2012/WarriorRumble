@@ -1,6 +1,5 @@
 #ifndef WARRIOR_RUMBLE_CHARACTER_H
 #define WARRIOR_RUMBLE_CHARACTER_H
-#include "includes.h"
 
 using namespace std;
 
@@ -9,6 +8,8 @@ typedef struct lvlUp {
     int health = 0,
         rage = 0,
         strength = 0,
+        level = 1,
+        expCharBonus = 0,
         stamina = 0;
 } lvlUp;
 
@@ -46,12 +47,13 @@ typedef struct character {
 
     int health = 0,
         rage = 0,
-        level = 0,
+        level = 1,
         expChar = 0,
         strength = 0,
         stamina = 0,
         HPTOTAL,
         RAGETOTAL = 100,
+        expCharTOTAL = 1000,
         weaponAttack,
         souls = 0,
         oldLevel;

@@ -17,10 +17,11 @@
 #include "character.h"
 #include "weapons.h"
 #include "armor.h"
+#include "var.h"
 
-character characterCreation(string characterName, string swordQualityType, string weaponQualityType, materials swordQuality, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType, materials helmQuality, materials axeQuality, string axeQualityType, materials poleaxeQuality, string poleaxeQualityType);
+character characterCreation(string characterName, string swordQualityType, string weaponQualityType, materials swordQuality, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType, materials helmQuality);
 void printInfo(character createChar);
-character levelUpTask(character createChar);
+void levelUpTask(character createChar);
 string weaponTypeF(materials weaponQuality);
 string swordWeaponTypeF(materials swordQuality);
 string poleaxeWeaponTypeF(materials poleaxeWeaponQ);

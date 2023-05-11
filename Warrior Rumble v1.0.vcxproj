@@ -131,6 +131,7 @@
     <ClInclude Include="character.h" />
     <ClInclude Include="includes.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="var.h" />
     <ClInclude Include="weapons.h" />
   </ItemGroup>
   <ItemGroup>

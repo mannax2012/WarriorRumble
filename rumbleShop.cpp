@@ -50,9 +50,9 @@ void shopMenuWeapons(character createChar) {
 	cout << "|==========================================================|" << endl;
 	cout << "|                       WEAPON MENU                        |" << endl;
 	cout << "|==========================================================|" << endl;
-	cout << "|      1     |            SWORDS            |             |" << endl;
-	cout << "|      2     |           AXES           |             |" << endl;
-	cout << "|      3     |            POLEAXES            |             |" << endl;
+	cout << "|      1     |            SWORDS             |             |" << endl;
+	cout << "|      2     |              AXES             |             |" << endl;
+	cout << "|      3     |            POLEAXES           |             |" << endl;
 	cout << "|      4     |           SHOP MENU           |             |" << endl;
 	cout << "|==========================================================|" << endl;
 	cin >> shopMenuChoice;
@@ -1070,9 +1070,9 @@ character shopMenuPotions(character createChar) {
 	cout << "|      1     |        EXPERIENCE POTION      |   1 SOUL    |" << endl;
 	cout << "|      2     |          HEALTH POTION        |  10 SOULS   |" << endl;
 	cout << "|      3     |           RAGE POTION         |   5 SOULS   |" << endl;
-	cout << "|      4     |         LARGE EXP POTION      |  10 SOULS    |" << endl;
-	cout << "|      5     |        FULL HEALTH POTION     |  50 SOUL    |" << endl;
-	cout << "|      6     |        FULL RAGE POTION       |  25 SOUL    |" << endl;
+	cout << "|      4     |         LARGE EXP POTION      |  10 SOULS   |" << endl;
+	cout << "|      5     |        FULL HEALTH POTION     |  50 SOULS   |" << endl;
+	cout << "|      6     |        FULL RAGE POTION       |  25 SOULS   |" << endl;
 	cout << "|      7     |           SHOP MENU           |             |" << endl;
 	cout << "|==========================================================|" << endl;
 	cin >> shopMenuChoice;
@@ -1098,7 +1098,6 @@ character shopMenuPotions(character createChar) {
 				cout << "You bought an Experience Potion granting 500 experience for 50 souls." << endl;
 				cout << "You have " << createChar.souls << " remaining." << endl;
 				createChar.expChar += 500;
-				createChar.level += (createChar.expChar / 1000);
 				levelUpCheck(createChar);
 				shopMenu(createChar);
 			}
@@ -1109,7 +1108,7 @@ character shopMenuPotions(character createChar) {
 				shopMenu(createChar);
 			}
 			else {
-				if (createChar.health = createChar.combatStats.totalHealthDamage - createChar.HPTOTAL) {
+				if (createChar.health >= createChar.combatStats.totalHealthDamage - createChar.HPTOTAL) {
 					cout << "Health already at max. " << createChar.health << " / " << createChar.HPTOTAL << endl;
 					shopMenu(createChar);
 				}
@@ -1118,7 +1117,7 @@ character shopMenuPotions(character createChar) {
 					createChar.souls = createChar.souls - 1;
 					cout << "You bought a Health Potion granting 10 Health for 1 soul." << endl;
 					cout << "You have " << createChar.souls << " remaining." << endl;
-					createChar.health = createChar.HPTOTAL + 10;
+					createChar.health = createChar.combatStats.totalHealthDamage  - 10;
 					if (createChar.health > createChar.HPTOTAL) {
 						createChar.health = createChar.HPTOTAL;
 					}
@@ -1133,15 +1132,21 @@ character shopMenuPotions(character createChar) {
 			}
 			else {
 				if (createChar.combatStats.rageUsed = 0) {
+					if (createChar.rage > 100) {
+						createChar.rage = 100;
+					}
 					cout << "Rage already at max. " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
 					shopMenu(createChar);
 				}
 				else {
 					//RAGEPot
 					createChar.souls = createChar.souls - 5;
-					createChar.combatStats.rageUsed = -10;
+					createChar.combatStats.rageUsed += createChar.RAGETOTAL - 90;
 					createChar.rage = createChar.RAGETOTAL - createChar.combatStats.rageUsed;
-					cout << "You bought a Rage Potion granting 100 Rage for 5 souls. " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
+					if (createChar.rage > 100) {
+						createChar.rage = 100;
+					}
+					cout << "You bought a Rage Potion granting 10 Rage for 5 souls. " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
 					cout << "You have " << createChar.souls << " remaining." << endl;
 
 					shopMenu(createChar);

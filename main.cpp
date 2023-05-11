@@ -20,7 +20,8 @@ string armorQualityType = armorTypeF(armorQuality);
 string sheildQualityType = sheildTypeF(sheildQuality);
 string weaponType = weaponChoiceF(weaponChoice);
 short pArray[3] = { 1,2,3 };
-
+string characterName;
+character player = characterCreation(characterName, swordQualityType, weaponQualityType, swordQuality, weaponType, helmQualityType, armorQualityType, sheildQualityType, helmQuality);
 int main() {
 
     TCHAR szOldTitle[MAX_PATH];
@@ -39,13 +40,11 @@ int main() {
         }
     };
     system("pause");
-    string characterName;
     cout << "Welcome to Warrior Rumble! Please enter your Warrior's name." << endl;
     cout << "Enter Name: ";
     cin >> characterName;
     cout << "You have just taken your first steps to becoming a great Warrior. " << characterName << "! Welcome to the Warrior RUMBLE!!" << endl;
-    character player = characterCreation(characterName, swordQualityType, weaponQualityType, swordQuality, weaponType, helmQualityType, armorQualityType, sheildQualityType, helmQuality, axeQuality, axeQualityType, poleaxeQuality, poleaxeQualityType);
-    
+   // character player = characterCreation(characterName, swordQualityType, weaponQualityType, swordQuality, weaponType, helmQualityType, armorQualityType, sheildQualityType, helmQuality);
     printInfo(player);
 
     system("pause");
@@ -77,7 +76,7 @@ void pFirstScreen(character createChar) {
     if (pExists) {
         switch (menuOptionChoice) {
         case 1:
-            printInfo(createChar);
+            printInfo(player);
             system("pause");
             pFirstScreen(createChar);
             break;
@@ -110,8 +109,8 @@ void printInfo(character createChar) {
     cout << "|                     CHARACTER SHEET                      |" << endl;
     cout << "|==========================================================|" << endl;
     cout << "|     NAME:       |           " << createChar.name << endl;
-    cout << "|     LEVEL:      |           " << createChar.level + 1 << endl;
-    cout << "|     EXPERIENCE: |           " << createChar.expChar << " / " << createChar.expChar + 1000 << endl;
+    cout << "|     LEVEL:      |           " << createChar.level << endl;
+    cout << "|     EXPERIENCE: |           " << createChar.expChar << " / " << createChar.expCharTOTAL << endl;
     cout << "|     HEALTH:     |           " << createChar.health << " / " << createChar.HPTOTAL << endl;
     cout << "|     RAGE:       |           " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
     cout << "|     STRENGTH:   |           " << createChar.strength << endl;
@@ -124,4 +123,5 @@ void printInfo(character createChar) {
     cout << "|     BODY ARMOR: |           " << createChar.armorQBody << " " << "Body Amor" << endl;
     cout << "|     SHEILD:     |           " << createChar.armorQSheild << " " << "Sheild" << endl;
     cout << "|==========================================================|" << endl;
+    
 }

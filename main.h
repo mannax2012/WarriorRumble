@@ -1,7 +1,7 @@
 #pragma once
 #ifndef  WARRIOR_RUMBLE_MAIN_H
 #define WARRIOR_RUMBLE_MAIN_H
-#include "includes.h"
+
 using namespace std;
 const string pError = "Incorrect entry - Please try again.";
 enum attacks {Slash, Jab, Heavy};

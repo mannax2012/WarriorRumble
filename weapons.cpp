@@ -1,5 +1,4 @@
 #include "includes.h"
-
 using namespace std;
 
 string weaponTypeF(materials weaponQuality) {

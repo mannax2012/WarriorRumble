@@ -1,7 +1,6 @@
 #pragma once
-#include "includes.h"
-using namespace std;
 
+using namespace std;
 extern materials helmQuality;
 extern materials armorQuality;
 extern materials sheildQuality;

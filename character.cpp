@@ -1,17 +1,14 @@
 #include "includes.h"
-#include "character.h"
 using namespace std;
-int cExpGainTotal = 0;
 
-character characterCreation(string characterName, string swordQualityType, string weaponQualityType, materials swordQuality, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType, materials helmQuality, materials axeQuality, string axeQualityType, materials poleaxeQuality, string poleaxeQualityType) {
+character characterCreation(string characterName, string swordQualityType, string weaponQualityType, materials swordQuality, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType, materials helmQuality) {
     character createChar;
     combat combatStats;
-    lvlUp lvlBonus;
-    
+    int cExpGainMAX = 1000;
+    int cExpGainTotal = 0;
+
     weaponQualityType = weaponTypeF(weaponQuality);
     swordQualityType = swordWeaponTypeF(swordQuality);
-    axeQualityType = axeWeaponTypeF(axeQuality);
-    poleaxeQualityType = poleaxeWeaponTypeF(poleaxeQuality);
     weaponType = weaponChoiceF(weaponChoice);
     helmQualityType = helmTypeF(helmQuality);
     armorQualityType = armorTypeF(armorQuality);
@@ -23,12 +20,10 @@ character characterCreation(string characterName, string swordQualityType, strin
     createChar.weaponT = weaponType;
     createChar.weaponQ = weaponQualityType;
     createChar.swordWeaponQ = swordQualityType;
-    createChar.axeWeaponQ = axeQualityType;
-    createChar.poleaxeWeaponQ = poleaxeQualityType;
 
     createChar.name = characterName;
     createChar.expChar += cExpGainTotal;
-    createChar.level += (createChar.expChar / 1000);
+    createChar.expCharTOTAL += cExpGainMAX + createChar.lvlBonus.expCharBonus;
     createChar.strength = (rand() % 5 + 5);
     createChar.stamina = (rand() % 5 + 5);
     createChar.HPTOTAL = (2 * createChar.stamina);
@@ -39,11 +34,9 @@ character characterCreation(string characterName, string swordQualityType, strin
     createChar.charArmor.sheildArmor = (static_cast<int>(sheildQuality)) + (static_cast<int>(sheildVals));
     createChar.charArmor.armorTotal = createChar.stamina + createChar.charArmor.bodyArmor + createChar.charArmor.helmArmor + createChar.charArmor.sheildArmor;
     createChar.combatStats.swordAttackDamage = (static_cast<int>(swordQuality)) + (static_cast<int>(weaponChoice));
-    createChar.combatStats.axeAttackDamage = (static_cast<int>(axeQuality)) + (static_cast<int>(weaponChoice));
-    createChar.combatStats.poleaxeAttackDamage = (static_cast<int>(poleaxeQuality)) + (static_cast<int>(weaponChoice));
     createChar.weaponAttack = (2 * createChar.strength) + (static_cast<int>(weaponChoice));
     createChar.souls = 2000;
-    levelUpCheck(createChar);
+    //createChar.expCharTOTAL = cExpGainMAX;
    
     return createChar;
 }
