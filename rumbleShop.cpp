@@ -1068,11 +1068,11 @@ character shopMenuPotions(character& createChar) {
 	cout << "|==========================================================|" << endl;
 	cout << "|            |         -------------         |    PRICE    |" << endl;
 	cout << "|      1     |        EXPERIENCE POTION      |   1 SOUL    |" << endl;
-	cout << "|      2     |          HEALTH POTION        |  10 SOULS   |" << endl;
+	cout << "|      2     |          HEALTH POTION        |   5 SOULS   |" << endl;
 	cout << "|      3     |           RAGE POTION         |   5 SOULS   |" << endl;
 	cout << "|      4     |         LARGE EXP POTION      |  10 SOULS   |" << endl;
-	cout << "|      5     |        FULL HEALTH POTION     |  50 SOULS   |" << endl;
-	cout << "|      6     |        FULL RAGE POTION       |  25 SOULS   |" << endl;
+	cout << "|      5     |        FULL HEALTH POTION     |  25 SOULS   |" << endl;
+	cout << "|      6     |        FULL RAGE POTION       |  15 SOULS   |" << endl;
 	cout << "|      7     |           SHOP MENU           |             |" << endl;
 	cout << "|==========================================================|" << endl;
 	cin >> shopMenuChoice;
@@ -1094,10 +1094,10 @@ character shopMenuPotions(character& createChar) {
 			}
 			else {
 				//expPot
-				createChar.souls = createChar.souls - 50;
-				cout << "You bought an Experience Potion granting 500 experience for 50 souls." << endl;
+				createChar.souls = createChar.souls - 10;
+				cout << "You bought an Experience Potion granting 100 experience for 10 souls." << endl;
 				cout << "You have " << createChar.souls << " remaining." << endl;
-				createChar.expChar += 500;
+				createChar.expChar += 100;
 				levelUpCheck(createChar);
 				shopMenu(createChar);
 			}
@@ -1115,8 +1115,6 @@ character shopMenuPotions(character& createChar) {
 				else {
 					//HealthPot
 					createChar.souls = createChar.souls - 1;
-					cout << "You bought a Health Potion granting 10 Health for 1 soul." << endl;
-					cout << "You have " << createChar.souls << " remaining." << endl;
 					createChar.combatStats.totalHealthDamage -= 10;
 					createChar.health = createChar.HPTOTAL - createChar.combatStats.totalHealthDamage;
 					if (createChar.health > createChar.HPTOTAL) {
@@ -1125,6 +1123,9 @@ character shopMenuPotions(character& createChar) {
 					if (createChar.combatStats.totalHealthDamage > createChar.HPTOTAL) {
 						createChar.combatStats.totalHealthDamage = createChar.HPTOTAL;
 					}
+					cout << "You bought a Health Potion granting 10 Health for 1 soul." << endl;
+					cout << "You have " << createChar.health << " / " << createChar.HPTOTAL << " health." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
 					shopMenu(createChar);
 				}
 			}
@@ -1152,13 +1153,72 @@ character shopMenuPotions(character& createChar) {
 				}
 			}
 		case 4:
-			shopMenu(createChar);
+			//Large XP
+			if (createChar.souls == 0) {
+				cout << "You do not have enough for this purchace." << endl;
+				shopMenu(createChar);
+			}
+			else {
+				//expPot
+				createChar.souls = createChar.souls - 10;
+				cout << "You bought an Experience Potion granting 250(1000 TESTING) experience for 10 souls." << endl;
+				cout << "You have " << createChar.souls << " remaining." << endl;
+				createChar.expChar += 1000;
+				levelUpCheck(createChar);
+				shopMenu(createChar);
+			}
 			break;
 		case 5:
-			shopMenu(createChar);
+			//FULL HEAL
+			if (createChar.souls == 0) {
+				cout << "You do not have enough for this purchace." << endl;
+				shopMenu(createChar);
+			}
+			else {
+				if (createChar.health >= createChar.HPTOTAL) {
+					cout << "Health already at max. " << createChar.health << " / " << createChar.HPTOTAL << endl;
+					shopMenu(createChar);
+				}
+				else {
+					//HealthPot
+					createChar.souls = createChar.souls - 25;
+					createChar.combatStats.totalHealthDamage -= createChar.HPTOTAL;
+					createChar.health = createChar.HPTOTAL - createChar.combatStats.totalHealthDamage;
+					if (createChar.health > createChar.HPTOTAL) {
+						createChar.health = createChar.HPTOTAL;
+					}
+					if (createChar.combatStats.totalHealthDamage > createChar.HPTOTAL) {
+						createChar.combatStats.totalHealthDamage = createChar.HPTOTAL;
+					}
+					cout << "You bought a Health Potion granting FULL Health for 25 souls." << endl;
+					cout << "You have " << createChar.health << " / " << createChar.HPTOTAL << " health." << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					shopMenu(createChar);
+				}
+			}
 			break;
 		case 6:
-			shopMenu(createChar);
+			//FULL RAGE
+			if (createChar.souls == 0) {
+				cout << "You do not have enough for this purchace." << endl;
+				shopMenu(createChar);
+			}
+			else {
+				if (createChar.combatStats.rageUsed == 0) {
+					cout << "Rage already at max. " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
+					shopMenu(createChar);
+				}
+				else {
+					createChar.souls = createChar.souls - 15;
+					createChar.combatStats.rageUsed -= 100;
+					createChar.rage = createChar.RAGETOTAL - createChar.combatStats.rageUsed;
+
+					cout << "You bought a Rage Potion granting 100 Rage for 5 souls. " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
+					shopMenu(createChar);
+					break;
+				}
+			}
 			break;
 		case 7:
 			shopMenu(createChar);

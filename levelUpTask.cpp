@@ -2,11 +2,6 @@
 using namespace std;
 
 character levelUpCheck(character& createChar) {
-    int getExp1 = 0;
-    cout << "Should be Zero: " << createChar.expChar << endl;
-    getExp1 = createChar.expChar;
-    cout << "Should be Current expCharTOTAL: " << createChar.expCharTOTAL << endl;
-    cout << "current expChar: " << createChar.expChar << endl;
     if (createChar.expChar >= createChar.expCharTOTAL) {
         createChar.expChar = 0;
         levelUpTask(createChar);
@@ -17,15 +12,17 @@ character levelUpCheck(character& createChar) {
 void levelUpTask(character& createChar){
 
     createChar.level += createChar.lvlBonus.level;
-    createChar.lvlBonus.health = (rand() % 5 + 5);
-    createChar.lvlBonus.stamina = (rand() % 2 + 3);
-    createChar.lvlBonus.strength = (rand() % 2 + 3);
-    createChar.health += createChar.lvlBonus.health;
+    createChar.lvlBonus.health = (rand() % 10 + createChar.level);
+    createChar.lvlBonus.stamina = (rand() % 3 + 3);
+    createChar.lvlBonus.strength = (rand() % 3 + 3);
+    createChar.health += createChar.lvlBonus.health + createChar.lvlBonus.stamina;
     createChar.stamina += createChar.lvlBonus.stamina;
     createChar.strength += createChar.lvlBonus.strength;
-    createChar.HPTOTAL += createChar.lvlBonus.health;
+    createChar.weaponAttack += createChar.strength;
+    createChar.HPTOTAL += createChar.lvlBonus.health + createChar.lvlBonus.stamina;
     createChar.lvlBonus.expCharBonus += createChar.level * 1000;
     createChar.expCharTOTAL += createChar.lvlBonus.expCharBonus;
+    createChar.charArmor.armorTotal += createChar.lvlBonus.stamina;
     
     cout << "You have gained a level!!" << endl;
     cout << "Character Level: " << createChar.level << endl;

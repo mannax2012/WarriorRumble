@@ -15,9 +15,9 @@ typedef struct lvlUp {
 
 typedef struct combat {
 
-    int totalHealthDamage = 10,
+    int totalHealthDamage = 0,
         rageRemaining = 0,
-        rageUsed = 100,
+        rageUsed = 0,
         swordAttackDamage,
         axeAttackDamage,
         poleaxeAttackDamage,

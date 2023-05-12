@@ -23,7 +23,7 @@ character characterCreation(string characterName, string swordQualityType, strin
 
     createChar.name = characterName;
     createChar.expChar += cExpGainTotal;
-    createChar.expCharTOTAL += cExpGainMAX + createChar.lvlBonus.expCharBonus;
+    createChar.expCharTOTAL += cExpGainMAX;
     createChar.strength = (rand() % 5 + 5);
     createChar.stamina = (rand() % 5 + 5);
     createChar.HPTOTAL = (2 * createChar.stamina);
