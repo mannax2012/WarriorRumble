@@ -3,7 +3,7 @@ using namespace std;
 short pArrayShop[4] = { 1,2,3,4 };
 short pArrayShopBuy[7] = { 1,2,3,4,5,6,7 };
 
-void shopMenu(character createChar) {
+void shopMenu(character& createChar) {
 	int shopMenuChoice;
 	cout << "|==========================================================|" << endl;
 	cout << "|                       RUMBLE SHOP                        |" << endl;
@@ -40,7 +40,7 @@ void shopMenu(character createChar) {
 	}
 };
 
-void shopMenuWeapons(character createChar) {
+void shopMenuWeapons(character& createChar) {
 	int shopMenuChoice;
 	cout << "- Weapons Menu -" << endl;
 	cout << "(1) Swords" << endl;
@@ -83,7 +83,7 @@ void shopMenuWeapons(character createChar) {
 	}
 };
 
-character shopMenuSwords(character createChar) {
+character shopMenuSwords(character& createChar) {
 	int shopMenuChoice;
 	cout << "|==========================================================|" << endl;
 	cout << "|                       WEAPONS MENU                       |" << endl;
@@ -279,7 +279,7 @@ character shopMenuSwords(character createChar) {
 	return createChar;
 };
 
-character shopMenuAxes(character createChar) {
+character shopMenuAxes(character& createChar) {
 	int shopMenuChoice;
 	cout << "- Axes Menu -" << endl;
 	cout << "(1) Oak Axe - 1 Soul" << endl;
@@ -475,7 +475,7 @@ character shopMenuAxes(character createChar) {
 	return createChar;
 };
 
-void shopMenuArmor(character createChar) {
+void shopMenuArmor(character& createChar) {
 				int shopMenuChoice;
 				cout << "|==========================================================|" << endl;
 				cout << "|                        ARMOR MENU                        |" << endl;
@@ -513,7 +513,7 @@ void shopMenuArmor(character createChar) {
 				}
 	};
 
-character shopMenuHelms(character createChar) {
+character shopMenuHelms(character& createChar) {
 	int shopMenuChoice;
 	
 	cout << "|==========================================================|" << endl;
@@ -693,7 +693,7 @@ character shopMenuHelms(character createChar) {
 	return createChar;
 };
 
-character shopMenuBodyArmor(character createChar) {
+character shopMenuBodyArmor(character& createChar) {
 	int shopMenuChoice;
 	cout << "|==========================================================|" << endl;
 	cout << "|                      BODY ARMOR MENU                     |" << endl;
@@ -872,7 +872,7 @@ character shopMenuBodyArmor(character createChar) {
 	return createChar;
 };
 
-character shopMenuSheilds(character createChar) {
+character shopMenuSheilds(character& createChar) {
 	int shopMenuChoice;
 
 	cout << "- Sheilds Menu -" << endl;
@@ -1060,7 +1060,7 @@ character shopMenuSheilds(character createChar) {
 	return createChar;
 };
 
-character shopMenuPotions(character createChar) {
+character shopMenuPotions(character& createChar) {
 	int shopMenuChoice;
 
 	cout << "|==========================================================|" << endl;
@@ -1108,7 +1108,7 @@ character shopMenuPotions(character createChar) {
 				shopMenu(createChar);
 			}
 			else {
-				if (createChar.health >= createChar.combatStats.totalHealthDamage - createChar.HPTOTAL) {
+				if (createChar.health >= createChar.HPTOTAL) {
 					cout << "Health already at max. " << createChar.health << " / " << createChar.HPTOTAL << endl;
 					shopMenu(createChar);
 				}
@@ -1117,9 +1117,13 @@ character shopMenuPotions(character createChar) {
 					createChar.souls = createChar.souls - 1;
 					cout << "You bought a Health Potion granting 10 Health for 1 soul." << endl;
 					cout << "You have " << createChar.souls << " remaining." << endl;
-					createChar.health = createChar.combatStats.totalHealthDamage  - 10;
+					createChar.combatStats.totalHealthDamage -= 10;
+					createChar.health = createChar.HPTOTAL - createChar.combatStats.totalHealthDamage;
 					if (createChar.health > createChar.HPTOTAL) {
 						createChar.health = createChar.HPTOTAL;
+					}
+					if (createChar.combatStats.totalHealthDamage > createChar.HPTOTAL) {
+						createChar.combatStats.totalHealthDamage = createChar.HPTOTAL;
 					}
 					shopMenu(createChar);
 				}
@@ -1131,24 +1135,18 @@ character shopMenuPotions(character createChar) {
 				shopMenu(createChar);
 			}
 			else {
-				if (createChar.combatStats.rageUsed = 0) {
-					if (createChar.rage > 100) {
-						createChar.rage = 100;
-					}
-					cout << "Rage already at max. " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
+				if (createChar.combatStats.rageUsed == 0) {
+						cout << "Rage already at max. " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
 					shopMenu(createChar);
 				}
 				else {
 					//RAGEPot
 					createChar.souls = createChar.souls - 5;
-					createChar.combatStats.rageUsed += createChar.RAGETOTAL - 90;
+					createChar.combatStats.rageUsed -= 50;
 					createChar.rage = createChar.RAGETOTAL - createChar.combatStats.rageUsed;
-					if (createChar.rage > 100) {
-						createChar.rage = 100;
-					}
-					cout << "You bought a Rage Potion granting 10 Rage for 5 souls. " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
-					cout << "You have " << createChar.souls << " remaining." << endl;
 
+					cout << "You bought a Rage Potion granting 50 Rage for 5 souls. " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
+					cout << "You have " << createChar.souls << " remaining." << endl;
 					shopMenu(createChar);
 					break;
 				}

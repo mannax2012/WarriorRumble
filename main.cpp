@@ -53,7 +53,7 @@ int main() {
     return 0;
 }
 
-void pFirstScreen(character createChar) {
+void pFirstScreen(character& createChar) {
     int menuOptionChoice;
     cout << "|==========================================================|" << endl;
     cout << "|                        Main Menu                         |" << endl;
@@ -94,7 +94,7 @@ void pFirstScreen(character createChar) {
     
     };
 
-void printInfo(character createChar) {
+void printInfo(character& createChar) {
     
     weaponQualityType = weaponTypeF(weaponQuality);
     swordQualityType = swordWeaponTypeF(swordQuality);
