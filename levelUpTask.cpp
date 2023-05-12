@@ -20,15 +20,14 @@ void levelUpTask(character& createChar){
     createChar.strength += createChar.lvlBonus.strength;
     createChar.weaponAttack += createChar.strength;
     createChar.HPTOTAL += createChar.lvlBonus.health + createChar.lvlBonus.stamina;
-    createChar.lvlBonus.expCharBonus += createChar.level * 1000;
-    createChar.expCharTOTAL += createChar.lvlBonus.expCharBonus;
+    createChar.expCharTOTAL += 1000 * (rand() % 3 + createChar.level);
     createChar.charArmor.armorTotal += createChar.lvlBonus.stamina;
     
     cout << "You have gained a level!!" << endl;
     cout << "Character Level: " << createChar.level << endl;
     cout << "Experience: " << createChar.expChar << " / " << createChar.expCharTOTAL << endl;
     cout << "You have gained: " << endl;
-    cout << "Health: " << createChar.lvlBonus.health << endl;
+    cout << "Health: " << createChar.lvlBonus.health + createChar.lvlBonus.stamina << endl;
     cout << "Stamina: " << createChar.lvlBonus.stamina << endl;
     cout << "Strength: " << createChar.lvlBonus.strength << endl;
     system("pause");

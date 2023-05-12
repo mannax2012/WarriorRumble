@@ -1,11 +1,10 @@
 #include "includes.h"
 using namespace std;
+short pMenu[7] = { 1,2,3,4,5,6,7 };
 
 void challengeMenu(character& createChar) {
-	cout << "Challenges are under Construction." << endl;
-	system("pause");
+	cout << "@@@@@@@@@@@@@-Challenges are under Construction-@@@@@@@@@@@@@" << endl;
 	int menuChoice;
-
 	cout << "|==========================================================|" << endl;
 	cout << "|                      CHALLENGE MENU                      |" << endl;
 	cout << "|==========================================================|" << endl;
@@ -18,6 +17,45 @@ void challengeMenu(character& createChar) {
 	cout << "|      6     |         -------------         |  25 SOULS   |" << endl;
 	cout << "|      7     |           SHOP MENU           |             |" << endl;
 	cout << "|==========================================================|" << endl;
-	//cin >> menuChoice;
+	cout << "Choose a difficulty level: ";
+	cin >> menuChoice;
+
+	if ((cin.fail())) {
+		cout << pError << endl;
+		cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		challengeMenu(createChar);
+	}
+
+	bool pExists = std::find(std::begin(pMenu), std::end(pMenu), menuChoice) != std::end(pMenu);
+	if (pExists) {
+		switch (menuChoice) {
+		case 1:
+			challengeMenu(createChar);
+			break;
+		case 2:
+			challengeMenu(createChar);
+			break;
+		case 3:
+			challengeMenu(createChar);
+			break;
+		case 4:
+			pFirstScreen(createChar);
+			break;
+		case 5:
+			pFirstScreen(createChar);
+			break;
+		case 6:
+			pFirstScreen(createChar);	
+			break;
+		case 7:
+			pFirstScreen(createChar);
+			break;
+		default:
+			cout << pError << endl;
+			challengeMenu(createChar);
+			break;
+		}
+	}
 	pFirstScreen(createChar);
 };

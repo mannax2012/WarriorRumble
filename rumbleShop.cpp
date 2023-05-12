@@ -13,6 +13,7 @@ void shopMenu(character& createChar) {
 	cout << "|      3     |            POTIONS            |             |" << endl;
 	cout << "|      4     |           MAIN MENU           |             |" << endl;
 	cout << "|==========================================================|" << endl;
+	cout << "Choose a Menu Option: ";
 	cin >> shopMenuChoice;
 
 	if ((cin.fail())) {
@@ -36,6 +37,7 @@ void shopMenu(character& createChar) {
 			break;
 		case 4:
 			pFirstScreen(createChar);
+
 		}
 	}
 };
@@ -55,6 +57,7 @@ void shopMenuWeapons(character& createChar) {
 	cout << "|      3     |            POLEAXES           |             |" << endl;
 	cout << "|      4     |           SHOP MENU           |             |" << endl;
 	cout << "|==========================================================|" << endl;
+	cout << "Choose a Menu Option: ";
 	cin >> shopMenuChoice;
 
 	if ((cin.fail())) {
@@ -97,6 +100,7 @@ character shopMenuSwords(character& createChar) {
 	cout << "|      6     |          MITHRIL SWORD        |   50 SOULS  |" << endl;
 	cout << "|      7     |           SHOP MENU           |             |" << endl;
 	cout << "|==========================================================|" << endl;
+	cout << "Choose a Menu Option: ";
 	cin >> shopMenuChoice;
 
 	if ((cin.fail())) {
@@ -142,7 +146,7 @@ character shopMenuSwords(character& createChar) {
 				shopMenu(createChar);
 			}
 			else {
-				if (weaponQuality == materials::Copper) {
+				if (swordQuality == materials::Copper) {
 					cout << "You already own a weapon of this quality." << endl;
 					shopMenu(createChar);
 				}
@@ -315,17 +319,15 @@ character shopMenuAxes(character& createChar) {
 					//Oak Axe
 					weaponChoice = weapons::axe;
 					swordQuality = materials::No;
-					axeQuality = materials::Oak;
-					poleaxeQuality = materials::No;
-					weaponQuality = materials::No;
+					weaponQuality = materials::Oak;
 					createChar.swordWeaponQ = swordWeaponTypeF(swordQuality);
 					createChar.axeWeaponQ = axeWeaponTypeF(axeQuality);
 					createChar.poleaxeWeaponQ = poleaxeWeaponTypeF(axeQuality);
 					createChar.weaponT = weaponChoiceF(weaponChoice);
 					createChar.weaponQ = weaponTypeF(weaponQuality);
 					createChar.souls = createChar.souls - 1;
-					createChar.combatStats.axeAttackDamage = (static_cast<int>(axeQuality)) + (static_cast<int>(weaponChoice));
-					cout << "You bought an " << createChar.axeWeaponQ << " " << createChar.weaponT << " for 1 soul. It has " << createChar.combatStats.axeAttackDamage << " Attack Power." << endl;
+					createChar.combatStats.axeAttackDamage = (static_cast<int>(weaponQuality)) + (static_cast<int>(weaponChoice));
+					cout << "You bought an " << createChar.weaponQ << " " << createChar.weaponT << " for 1 soul. It has " << createChar.combatStats.axeAttackDamage << " Attack Power." << endl;
 					cout << "You have " << createChar.souls << " remaining." << endl;
 					createChar.weaponAttack = (2 * createChar.strength) + createChar.combatStats.axeAttackDamage;
 					shopMenuAxes(createChar);
@@ -485,6 +487,7 @@ void shopMenuArmor(character& createChar) {
 				cout << "|      3     |            SHEILDS            |             |" << endl;
 				cout << "|      4     |           SHOP MENU           |             |" << endl;
 				cout << "|==========================================================|" << endl;
+				cout << "Choose a Menu Option: ";
 				cin >> shopMenuChoice;
 
 				if ((cin.fail())) {
@@ -528,6 +531,7 @@ character shopMenuHelms(character& createChar) {
 	cout << "|      6     |           MITHRIL HELM        |   50 SOULS  |" << endl;
 	cout << "|      7     |           SHOP MENU           |             |" << endl;
 	cout << "|==========================================================|" << endl;
+	cout << "Choose a Menu Option: ";
 	cin >> shopMenuChoice;
 
 	if ((cin.fail())) {
@@ -707,6 +711,7 @@ character shopMenuBodyArmor(character& createChar) {
 	cout << "|      6     |       MITHRIL BODY ARMOR      |   50 SOULS  |" << endl;
 	cout << "|      7     |           SHOP MENU           |             |" << endl;
 	cout << "|==========================================================|" << endl;
+	cout << "Choose a Menu Option: ";
 	cin >> shopMenuChoice;
 
 	if ((cin.fail())) {
@@ -895,6 +900,7 @@ character shopMenuSheilds(character& createChar) {
 	cout << "|      6     |         MITHRIL SHEILD        |   50 SOULS  |" << endl;
 	cout << "|      7     |           SHOP MENU           |             |" << endl;
 	cout << "|==========================================================|" << endl;
+	cout << "Choose a Menu Option: ";
 	cin >> shopMenuChoice;
 
 	if ((cin.fail())) {
@@ -1075,6 +1081,7 @@ character shopMenuPotions(character& createChar) {
 	cout << "|      6     |        FULL RAGE POTION       |  15 SOULS   |" << endl;
 	cout << "|      7     |           SHOP MENU           |             |" << endl;
 	cout << "|==========================================================|" << endl;
+	cout << "Choose a Menu Option: ";
 	cin >> shopMenuChoice;
 
 	if ((cin.fail())) {

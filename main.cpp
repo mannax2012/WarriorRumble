@@ -21,7 +21,6 @@ string sheildQualityType = sheildTypeF(sheildQuality);
 string weaponType = weaponChoiceF(weaponChoice);
 short pArray[3] = { 1,2,3 };
 string characterName;
-character player = characterCreation(characterName, swordQualityType, weaponQualityType, swordQuality, weaponType, helmQualityType, armorQualityType, sheildQualityType, helmQuality);
 int main() {
 
     TCHAR szOldTitle[MAX_PATH];
@@ -44,7 +43,7 @@ int main() {
     cout << "Enter Name: ";
     cin >> characterName;
     cout << "You have just taken your first steps to becoming a great Warrior. " << characterName << "! Welcome to the Warrior RUMBLE!!" << endl;
-   // character player = characterCreation(characterName, swordQualityType, weaponQualityType, swordQuality, weaponType, helmQualityType, armorQualityType, sheildQualityType, helmQuality);
+   character player = characterCreation(characterName, swordQualityType, weaponQualityType, swordQuality, weaponType, helmQualityType, armorQualityType, sheildQualityType, helmQuality);
     printInfo(player);
 
     system("pause");
@@ -62,6 +61,7 @@ void pFirstScreen(character& createChar) {
     cout << "|      2     |          RUMBLE SHOP          |             |" << endl;
     cout << "|      3     |         CHALLENGE MENU        |             |" << endl;
     cout << "|==========================================================|" << endl;
+    cout << "Choose a Menu Option: ";
     cin >> menuOptionChoice;
 
     
@@ -76,7 +76,7 @@ void pFirstScreen(character& createChar) {
     if (pExists) {
         switch (menuOptionChoice) {
         case 1:
-            printInfo(player);
+            printInfo(createChar);
             system("pause");
             pFirstScreen(createChar);
             break;
@@ -86,13 +86,14 @@ void pFirstScreen(character& createChar) {
         case 3:
             challengeMenu(createChar);
             break;
+        default:
+            cout << pError << endl;
+            pFirstScreen(createChar);
+            break;
         }
-        }else { 
-        cout << pError << endl; 
-        pFirstScreen(createChar);
     }
     
-    };
+};
 
 void printInfo(character& createChar) {
     

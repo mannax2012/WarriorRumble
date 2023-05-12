@@ -17,7 +17,6 @@
 #include "character.h"
 #include "weapons.h"
 #include "armor.h"
-#include "var.h"
 
 character characterCreation(string characterName, string swordQualityType, string weaponQualityType, materials swordQuality, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType, materials helmQuality);
 void printInfo(character& createChar);
