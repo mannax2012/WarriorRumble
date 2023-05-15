@@ -30,6 +30,9 @@
     <ClInclude Include="armor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="monsters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -51,6 +54,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="armor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="monsters.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="combat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -131,14 +131,17 @@
     <ClInclude Include="character.h" />
     <ClInclude Include="includes.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="monsters.h" />
     <ClInclude Include="weapons.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="armor.cpp" />
     <ClCompile Include="challenges.cpp" />
     <ClCompile Include="character.cpp" />
+    <ClCompile Include="combat.cpp" />
     <ClCompile Include="levelUpTask.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="monsters.cpp" />
     <ClCompile Include="rumbleShop.cpp" />
     <ClCompile Include="weapons.cpp" />
   </ItemGroup>

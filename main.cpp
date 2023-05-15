@@ -43,7 +43,7 @@ int main() {
     cout << "Enter Name: ";
     cin >> characterName;
     cout << "You have just taken your first steps to becoming a great Warrior. " << characterName << "! Welcome to the Warrior RUMBLE!!" << endl;
-   character player = characterCreation(characterName, swordQualityType, weaponQualityType, swordQuality, weaponType, helmQualityType, armorQualityType, sheildQualityType, helmQuality);
+   character player = characterCreation(characterName, swordQualityType, weaponQualityType, swordQuality, weaponType, helmQualityType, armorQualityType, sheildQualityType, helmQuality, weaponChoice);
     printInfo(player);
 
     system("pause");
@@ -92,15 +92,17 @@ void pFirstScreen(character& createChar) {
             break;
         }
     }
+    else
+    {
+        cout << pError << endl;
+        pFirstScreen(createChar);
+    }
     
 };
 
 void printInfo(character& createChar) {
     
     weaponQualityType = weaponTypeF(weaponQuality);
-    swordQualityType = swordWeaponTypeF(swordQuality);
-    axeQualityType = axeWeaponTypeF(axeQuality);
-    poleaxeQualityType = poleaxeWeaponTypeF(poleaxeQuality);
     weaponType = weaponChoiceF(weaponChoice);
     helmQualityType = helmTypeF(helmQuality);
     armorQualityType = armorTypeF(armorQuality);
@@ -119,7 +121,7 @@ void printInfo(character& createChar) {
     cout << "|     ARMOR:      |           " << createChar.charArmor.armorTotal << endl;
     cout << "|     ATTACK:     |           " << createChar.weaponAttack << endl;
     cout << "|     SOULS:      |           " << createChar.souls << endl;
-    cout << "|     WEAPON:     |           " << createChar.weaponQ << createChar.swordWeaponQ << " " << createChar.weaponT << endl;
+    cout << "|     WEAPON:     |           " << createChar.weaponQ << " " << createChar.weaponT << endl;
     cout << "|     HELMET:     |           " << createChar.armorQHelm << " " << "Helmet" << endl;
     cout << "|     BODY ARMOR: |           " << createChar.armorQBody << " " << "Body Amor" << endl;
     cout << "|     SHEILD:     |           " << createChar.armorQSheild << " " << "Sheild" << endl;

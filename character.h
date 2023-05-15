@@ -1,6 +1,6 @@
 #ifndef WARRIOR_RUMBLE_CHARACTER_H
 #define WARRIOR_RUMBLE_CHARACTER_H
-
+#include "monsters.h"
 using namespace std;
 
 typedef struct lvlUp {
@@ -14,6 +14,8 @@ typedef struct lvlUp {
 } lvlUp;
 
 typedef struct combat {
+    string jabAttack = "Jab",
+        slashAttack;
 
     int totalHealthDamage = 0,
         rageRemaining = 0,
@@ -57,11 +59,13 @@ typedef struct character {
         weaponAttack,
         souls = 0,
         oldLevel;
+
     lvlUp lvlBonus;
     combat combatStats;
     armorval charArmor;
     materials valsUp;
     weapons pWeapons;
+    monsters monsters;
 } character;
 
 #endif //WARRIOR_RUMBLE_CHARACTER_H
