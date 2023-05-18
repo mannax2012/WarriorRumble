@@ -63,7 +63,7 @@ void pFirstScreen(character& createChar) {
     cout << "|      3     |         CHALLENGE MENU        |             |" << endl;
     cout << "|            |                               |             |" << endl;
     cout << "|            |                               |             |" << endl;
-    cout << "|            |                               |             |" << endl;
+    cout << "|      5     |             SAVE              |             |" << endl;
     cout << "|            |                               |             |" << endl;
     cout << "|      7     |             EXIT              |             |" << endl;
     cout << "|==========================================================|" << endl;
@@ -92,10 +92,11 @@ void pFirstScreen(character& createChar) {
         case 3:
             challengeMenu(createChar);
             break;
+        case 5:
+            saveChar(createChar);
         case 7:
             pExit(createChar);
         default:
-            cout << pError << endl;
             pFirstScreen(createChar);
             break;
         }
@@ -103,6 +104,7 @@ void pFirstScreen(character& createChar) {
     else
     {
         cout << pError << endl;
+        system("pause");
         pFirstScreen(createChar);
     }
     
@@ -142,4 +144,52 @@ int pExit(character& createChar) {
     cout << "Exiting Game!" << endl;
     exit(0);
     return 0;
+}
+
+character saveChar(character& createChar) {
+    string saveTitle = createChar.name + ".txt";
+    ofstream saveCharFile;
+    saveCharFile.open(saveTitle);
+    saveCharFile << "\t\t\t" << createChar.name << ", " << createChar.level << "\n";
+    saveCharFile.close();
+
+    saveCharFile.seekp(0, std::ios::end); //to ensure the put pointer is at the end
+    saveCharFile << "\t\t\t" << createChar.name << ", " << createChar.level;
+
+    std::ofstream SaveCharFile(saveTitle);
+
+    // Always check to see if the file is open and for errors.
+    if (SaveCharFile.is_open())
+    {
+        std::cout << "SAVING... " << createChar.name << ".txt has been created." << endl;
+        // If it is open we can do our writing to the file.
+        // Here is a example of this.
+        SaveCharFile << createChar.name << endl;
+        SaveCharFile << createChar.level << endl;
+        SaveCharFile << createChar.expChar << endl;
+        SaveCharFile << createChar.expCharTOTAL << endl;
+        SaveCharFile << createChar.health << endl;
+        SaveCharFile << createChar.HPTOTAL << endl;
+        SaveCharFile << createChar.rage << endl;
+        SaveCharFile << createChar.strength << endl;
+        SaveCharFile << createChar.stamina << endl;
+        SaveCharFile << createChar.charArmor.armorTotal << endl;
+        SaveCharFile << createChar.weaponAttack << endl;
+        SaveCharFile << createChar.souls << endl;
+        SaveCharFile << createChar.weaponQ << endl;
+        SaveCharFile << createChar.armorQHelm << endl;
+        SaveCharFile << createChar.armorQBody << endl;
+        SaveCharFile << createChar.armorQSheild << endl;
+    }
+    else
+    {
+        // If the file isn't open something went wrong. Point that out.
+        std::cout << "Something went wrong with opening the file!";
+    }
+
+    // After you are done with the file always close it.
+    SaveCharFile.close();
+    system("pause");
+    pFirstScreen(createChar);
+    return createChar;
 }

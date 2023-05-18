@@ -2,6 +2,7 @@
 #ifndef WARRIOR_RUMBLE_INCLUDES_H
 #define WARRIOR_RUMBLE_INCLUDES_H
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <cmath>
 #include <ctime>
@@ -22,6 +23,7 @@
 character characterCreation(string characterName, string swordQualityType, string weaponQualityType, materials swordQuality, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType, materials helmQuality, weapons weaponsChoice);
 void printInfo(character& createChar);
 void levelUpTask(character& createChar);
+character saveChar(character& createChar);
 character levelUpCheck(character& createChar);
 string weaponTypeF(materials weaponQuality);
 string swordWeaponTypeF(materials swordQuality);
