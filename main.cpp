@@ -19,7 +19,7 @@ string helmQualityType = helmTypeF(helmQuality);
 string armorQualityType = armorTypeF(armorQuality);
 string sheildQualityType = sheildTypeF(sheildQuality);
 string weaponType = weaponChoiceF(weaponChoice);
-short pArray[3] = { 1,2,3 };
+short pArray[7] = { 1,2,3,4,5,6,7 };
 string characterName;
 int main() {
 
@@ -53,6 +53,7 @@ int main() {
 }
 
 void pFirstScreen(character& createChar) {
+    system("cls");
     int menuOptionChoice;
     cout << "|==========================================================|" << endl;
     cout << "|                        Main Menu                         |" << endl;
@@ -60,6 +61,11 @@ void pFirstScreen(character& createChar) {
     cout << "|      1     |         CHARACTER SHEET       |             |" << endl;
     cout << "|      2     |          RUMBLE SHOP          |             |" << endl;
     cout << "|      3     |         CHALLENGE MENU        |             |" << endl;
+    cout << "|            |                               |             |" << endl;
+    cout << "|            |                               |             |" << endl;
+    cout << "|            |                               |             |" << endl;
+    cout << "|            |                               |             |" << endl;
+    cout << "|      7     |             EXIT              |             |" << endl;
     cout << "|==========================================================|" << endl;
     cout << "Choose a Menu Option: ";
     cin >> menuOptionChoice;
@@ -86,6 +92,8 @@ void pFirstScreen(character& createChar) {
         case 3:
             challengeMenu(createChar);
             break;
+        case 7:
+            pExit(createChar);
         default:
             cout << pError << endl;
             pFirstScreen(createChar);
@@ -107,7 +115,7 @@ void printInfo(character& createChar) {
     helmQualityType = helmTypeF(helmQuality);
     armorQualityType = armorTypeF(armorQuality);
     sheildQualityType = sheildTypeF(sheildQuality);
-
+    system("cls");
     cout << "|==========================================================|" << endl;
     cout << "|                     CHARACTER SHEET                      |" << endl;
     cout << "|==========================================================|" << endl;
@@ -127,4 +135,11 @@ void printInfo(character& createChar) {
     cout << "|     SHEILD:     |           " << createChar.armorQSheild << " " << "Sheild" << endl;
     cout << "|==========================================================|" << endl;
     
+}
+
+int pExit(character& createChar) {
+    system("pause");
+    cout << "Exiting Game!" << endl;
+    exit(0);
+    return 0;
 }

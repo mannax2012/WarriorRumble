@@ -32,6 +32,7 @@ string helmTypeF(materials helmQuality);
 string armorTypeF(materials armorQuality);
 string sheildTypeF(materials helmQuality);
 void pFirstScreen(character& createChar);
+int pExit(character& createChar);
 
 //RUMBLE SHOP
 void shopMenuWeapons(character& createChar);

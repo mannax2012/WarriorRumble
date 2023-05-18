@@ -1,9 +1,10 @@
 #include "includes.h"
 using namespace std;
-short pArrayShop[4] = { 1,2,3,4 };
+short pArrayShop[7] = { 1,2,3,4,5,6,7 };
 short pArrayShopBuy[7] = { 1,2,3,4,5,6,7 };
 
 void shopMenu(character& createChar) {
+	system("cls");
 	int shopMenuChoice;
 	cout << "|==========================================================|" << endl;
 	cout << "|                       RUMBLE SHOP                        |" << endl;
@@ -11,7 +12,10 @@ void shopMenu(character& createChar) {
 	cout << "|      1     |            WEAPONS            |             |" << endl;
 	cout << "|      2     |             ARMOR             |             |" << endl;
 	cout << "|      3     |            POTIONS            |             |" << endl;
-	cout << "|      4     |           MAIN MENU           |             |" << endl;
+	cout << "|            |                               |             |" << endl;
+	cout << "|            |                               |             |" << endl;
+	cout << "|            |                               |             |" << endl;
+	cout << "|      7     |           MAIN MENU           |             |" << endl;
 	cout << "|==========================================================|" << endl;
 	cout << "Choose a Menu Option: ";
 	cin >> shopMenuChoice;
@@ -35,9 +39,12 @@ void shopMenu(character& createChar) {
 		case 3:
 			shopMenuPotions(createChar);
 			break;
-		case 4:
+		case 7:
 			pFirstScreen(createChar);
-
+			break;
+		default:
+			shopMenu(createChar);
+			break;
 		}
 	}
 	else
@@ -48,6 +55,7 @@ void shopMenu(character& createChar) {
 };
 
 void shopMenuWeapons(character& createChar) {
+	system("cls");
 	int shopMenuChoice;
 	cout << "|==========================================================|" << endl;
 	cout << "|                       WEAPON MENU                        |" << endl;
@@ -55,7 +63,10 @@ void shopMenuWeapons(character& createChar) {
 	cout << "|      1     |            SWORDS             |             |" << endl;
 	cout << "|      2     |             AXES              |             |" << endl;
 	cout << "|      3     |           POLEAXES            |             |" << endl;
-	cout << "|      4     |           SHOP MENU           |             |" << endl;
+	cout << "|            |                               |             |" << endl;
+	cout << "|            |                               |             |" << endl;
+	cout << "|            |                               |             |" << endl;
+	cout << "|      7     |           SHOP MENU           |             |" << endl;
 	cout << "|==========================================================|" << endl;
 	cout << "Choose a Menu Option: ";
 	cin >> shopMenuChoice;
@@ -79,7 +90,10 @@ void shopMenuWeapons(character& createChar) {
 		case 3:
 			shopMenuPoleaxes(createChar);
 			break;
-		case 4:
+		case 7:
+			pFirstScreen(createChar);
+			break;
+		default:
 			shopMenu(createChar);
 			break;
 		}
@@ -92,6 +106,7 @@ void shopMenuWeapons(character& createChar) {
 };
 
 character shopMenuSwords(character& createChar) {
+	system("cls");
 	int shopMenuChoice;
 	cout << "|==========================================================|" << endl;
 	cout << "|                       WEAPONS MENU                       |" << endl;
@@ -121,11 +136,13 @@ character shopMenuSwords(character& createChar) {
 		case 1:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (swordQuality >= materials::Oak) {
 					cout << "You already own a weapon of this quality." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -140,11 +157,13 @@ character shopMenuSwords(character& createChar) {
 		case 2:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (swordQuality == materials::Copper) {
 					cout << "You already own a weapon of this quality." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -159,11 +178,13 @@ character shopMenuSwords(character& createChar) {
 		case 3:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (swordQuality >= 5) {
 					cout << "You already own a weapon of this quality." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -179,11 +200,13 @@ character shopMenuSwords(character& createChar) {
 		case 4:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (swordQuality >= 6) {
 					cout << "You already own a weapon of this quality." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -199,11 +222,13 @@ character shopMenuSwords(character& createChar) {
 		case 5:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (swordQuality >= 7) {
 					cout << "You already own a weapon of this quality." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -218,11 +243,13 @@ character shopMenuSwords(character& createChar) {
 		case 6:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (swordQuality >= 10) {
 					cout << "You already own a weapon of this quality." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -242,12 +269,14 @@ character shopMenuSwords(character& createChar) {
 		else
 		{
 			cout << pError << endl;
+			system("pause");
 			shopMenuSwords(createChar);
 	}
 	return createChar;
 };
 
 character shopMenuAxes(character& createChar) {
+	system("cls");
 	int shopMenuChoice;
 	cout << "|==========================================================|" << endl;
 	cout << "|                       WEAPONS MENU                       |" << endl;
@@ -277,11 +306,13 @@ character shopMenuAxes(character& createChar) {
 		case 1:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (axeQuality >= materials::Oak) {
 					cout << "You already own a weapon of this quality." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -296,11 +327,13 @@ character shopMenuAxes(character& createChar) {
 		case 2:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (axeQuality >= materials::Copper) {
 					cout << "You already own a weapon of this quality." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -315,11 +348,13 @@ character shopMenuAxes(character& createChar) {
 		case 3:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (axeQuality >= materials::Bronze) {
 					cout << "You already own a weapon of this quality." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -334,11 +369,13 @@ character shopMenuAxes(character& createChar) {
 		case 4:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (axeQuality >= materials::Iron) {
 					cout << "You already own a weapon of this quality." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -353,11 +390,13 @@ character shopMenuAxes(character& createChar) {
 		case 5:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (axeQuality >= materials::Steel) {
 					cout << "You already own a weapon of this quality." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -372,11 +411,13 @@ character shopMenuAxes(character& createChar) {
 		case 6:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (axeQuality >= materials::Mithril) {
 					cout << "You already own a weapon of this quality." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -396,6 +437,7 @@ character shopMenuAxes(character& createChar) {
 		else
 	{
 		cout << pError << endl;
+		system("pause");
 		shopMenuAxes(createChar);
 	}
 	return createChar;
@@ -403,6 +445,7 @@ character shopMenuAxes(character& createChar) {
 
 character shopMenuPoleaxes(character& createChar) {
 	int shopMenuChoice;
+	system("cls");
 	cout << "|==========================================================|" << endl;
 	cout << "|                       WEAPONS MENU                       |" << endl;
 	cout << "|==========================================================|" << endl;
@@ -422,6 +465,7 @@ character shopMenuPoleaxes(character& createChar) {
 		cout << pError << endl;
 		cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		system("pause");
 		shopMenuPoleaxes(createChar);
 	}
 
@@ -431,11 +475,13 @@ character shopMenuPoleaxes(character& createChar) {
 		case 1:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (poleaxeQuality >= materials::Oak) {
 					cout << "You already own a weapon of this quality." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -450,11 +496,13 @@ character shopMenuPoleaxes(character& createChar) {
 		case 2:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (poleaxeQuality >= materials::Copper) {
 					cout << "You already own a weapon of this quality." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -469,11 +517,13 @@ character shopMenuPoleaxes(character& createChar) {
 		case 3:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (poleaxeQuality >= materials::Bronze) {
 					cout << "You already own a weapon of this quality." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -488,11 +538,13 @@ character shopMenuPoleaxes(character& createChar) {
 		case 4:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (poleaxeQuality >= materials::Iron) {
 					cout << "You already own a weapon of this quality." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -507,18 +559,20 @@ character shopMenuPoleaxes(character& createChar) {
 		case 5:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (poleaxeQuality >= materials::Steel) {
 					cout << "You already own a weapon of this quality." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
 					//Steel
 					poleaxeQuality = materials::Steel;
 					createChar.souls = createChar.souls - 25;
-					buyWeaponAxe(createChar);
+					buyWeaponPoleaxe(createChar);
 					shopMenu(createChar);
 				}
 			}
@@ -526,11 +580,13 @@ character shopMenuPoleaxes(character& createChar) {
 		case 6:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (poleaxeQuality >= materials::Mithril) {
 					cout << "You already own a weapon of this quality." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -550,6 +606,7 @@ character shopMenuPoleaxes(character& createChar) {
 	else
 	{
 		cout << pError << endl;
+		system("pause");
 		shopMenuPoleaxes(createChar);
 	}
 	return createChar;
@@ -557,13 +614,17 @@ character shopMenuPoleaxes(character& createChar) {
 
 void shopMenuArmor(character& createChar) {
 				int shopMenuChoice;
+				system("cls");
 				cout << "|==========================================================|" << endl;
 				cout << "|                        ARMOR MENU                        |" << endl;
 				cout << "|==========================================================|" << endl;
 				cout << "|      1     |            HELMETS            |             |" << endl;
 				cout << "|      2     |           BODY ARMOR          |             |" << endl;
 				cout << "|      3     |            SHEILDS            |             |" << endl;
-				cout << "|      4     |           SHOP MENU           |             |" << endl;
+				cout << "|            |                               |             |" << endl;
+				cout << "|            |                               |             |" << endl;
+				cout << "|            |                               |             |" << endl;
+				cout << "|      7     |           SHOP MENU           |             |" << endl;
 				cout << "|==========================================================|" << endl;
 				cout << "Choose a Menu Option: ";
 				cin >> shopMenuChoice;
@@ -572,6 +633,7 @@ void shopMenuArmor(character& createChar) {
 					cout << pError << endl;
 					cin.clear();
 					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+					system("pause");
 					shopMenuArmor(createChar);
 				}
 
@@ -587,21 +649,25 @@ void shopMenuArmor(character& createChar) {
 					case 3:
 						shopMenuSheilds(createChar);
 						break;
-					case 4:
+					case 7:
 						shopMenu(createChar);
+						break;
+					default:
+						shopMenuArmor(createChar);
 						break;
 					}
 				}
 				else
 				{
 					cout << pError << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 	};
 
 character shopMenuHelms(character& createChar) {
 	int shopMenuChoice;
-	
+	system("cls");
 	cout << "|==========================================================|" << endl;
 	cout << "|                         HELM MENU                        |" << endl;
 	cout << "|==========================================================|" << endl;
@@ -621,6 +687,7 @@ character shopMenuHelms(character& createChar) {
 		cout << pError << endl;
 		cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		system("pause");
 		shopMenuHelms(createChar);
 	}
 
@@ -630,11 +697,13 @@ character shopMenuHelms(character& createChar) {
 		case 1:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (helmQuality >= materials::Oak) {
 					cout << "You already own a helmet of this quality or better." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -649,11 +718,13 @@ character shopMenuHelms(character& createChar) {
 		case 2:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (helmQuality >= materials::Copper){
 					cout << "You already own a helmet of this quality or better." << endl;
+					system("pause");
 					shopMenu(createChar);
 					}
 				else {
@@ -668,11 +739,13 @@ character shopMenuHelms(character& createChar) {
 		case 3:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (helmQuality >= materials::Bronze) {
 					cout << "You already own a helmet of this quality or better." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -688,11 +761,13 @@ character shopMenuHelms(character& createChar) {
 		case 4:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (helmQuality >= materials::Iron) {
 					cout << "You already own a helmet of this quality or better." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -707,11 +782,13 @@ character shopMenuHelms(character& createChar) {
 		case 5:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (helmQuality >= materials::Steel) {
 					cout << "You already own a helmet of this quality or better." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -726,11 +803,13 @@ character shopMenuHelms(character& createChar) {
 		case 6:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (helmQuality >= materials::Mithril) {
 					cout << "You already own a helmet of this quality or better." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -750,12 +829,14 @@ character shopMenuHelms(character& createChar) {
 			else
 			{
 				cout << pError << endl;
+				system("pause");
 				shopMenuHelms(createChar);
 	}
 	return createChar;
 };
 
 character shopMenuBodyArmor(character& createChar) {
+	system("cls");
 	int shopMenuChoice;
 	cout << "|==========================================================|" << endl;
 	cout << "|                      BODY ARMOR MENU                     |" << endl;
@@ -776,6 +857,7 @@ character shopMenuBodyArmor(character& createChar) {
 		cout << pError << endl;
 		cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		system("pause");
 		shopMenuBodyArmor(createChar);
 	}
 
@@ -785,11 +867,13 @@ character shopMenuBodyArmor(character& createChar) {
 		case 1:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (armorQuality >= materials::Oak) {
 					cout << "You already own a Body Armor of this quality or better." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -804,11 +888,13 @@ character shopMenuBodyArmor(character& createChar) {
 		case 2:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (armorQuality >= materials::Copper) {
 					cout << "You already own Body Armor of this quality or better." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -823,11 +909,13 @@ character shopMenuBodyArmor(character& createChar) {
 		case 3:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (armorQuality >= materials::Bronze) {
 					cout << "You already own Body Armor of this quality or better." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -843,11 +931,13 @@ character shopMenuBodyArmor(character& createChar) {
 		case 4:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (armorQuality >= materials::Iron) {
 					cout << "You already own Body Armor of this quality or better." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -862,11 +952,13 @@ character shopMenuBodyArmor(character& createChar) {
 		case 5:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (armorQuality >= materials::Steel) {
 					cout << "You already own Body Armor of this quality or better." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -881,11 +973,13 @@ character shopMenuBodyArmor(character& createChar) {
 		case 6:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (armorQuality >= materials::Mithril) {
 					cout << "You already own Body Armor of this quality or better." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -905,12 +999,14 @@ character shopMenuBodyArmor(character& createChar) {
 			else
 			{
 				cout << pError << endl;
+				system("pause");
 				shopMenuBodyArmor(createChar);
 	}
 	return createChar;
 };
 
 character shopMenuSheilds(character& createChar) {
+	system("cls");
 	int shopMenuChoice;
 
 	cout << "- Sheilds Menu -" << endl;
@@ -940,6 +1036,7 @@ character shopMenuSheilds(character& createChar) {
 		cout << pError << endl;
 		cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		system("pause");
 		shopMenuSheilds(createChar);
 	}
 
@@ -949,11 +1046,13 @@ character shopMenuSheilds(character& createChar) {
 		case 1:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (sheildQuality >= materials::Oak) {
 					cout << "You already own a Sheild of this quality or better." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -968,11 +1067,13 @@ character shopMenuSheilds(character& createChar) {
 		case 2:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (sheildQuality >= materials::Copper) {
 					cout << "You already own a Sheild of this quality or better." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -987,11 +1088,13 @@ character shopMenuSheilds(character& createChar) {
 		case 3:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (sheildQuality >= materials::Bronze) {
 					cout << "You already own a Sheild of this quality or better." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -1007,11 +1110,13 @@ character shopMenuSheilds(character& createChar) {
 		case 4:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (sheildQuality >= materials::Iron) {
 					cout << "You already own a Sheild of this quality or better." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -1026,11 +1131,13 @@ character shopMenuSheilds(character& createChar) {
 		case 5:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (sheildQuality >= materials::Steel) {
 					cout << "You already own a Sheild of this quality or better." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -1045,11 +1152,13 @@ character shopMenuSheilds(character& createChar) {
 		case 6:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
+				system("pause");
 				shopMenu(createChar);
 			}
 			else {
 				if (sheildQuality >= materials::Mithril) {
 					cout << "You already own a Sheild of this quality or better." << endl;
+					system("pause");
 					shopMenu(createChar);
 				}
 				else {
@@ -1069,12 +1178,14 @@ character shopMenuSheilds(character& createChar) {
 			else
 			{
 				cout << pError << endl;
+				system("pause");
 				shopMenuSheilds(createChar);
 	}
 	return createChar;
 };
 
 character shopMenuPotions(character& createChar) {
+	system("cls");
 	int shopMenuChoice;
 
 	cout << "|==========================================================|" << endl;
@@ -1105,7 +1216,8 @@ character shopMenuPotions(character& createChar) {
 		case 1:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
-				shopMenu(createChar);
+				system("pause");
+				shopMenuPotions(createChar);
 			}
 			else {
 				//expPot
@@ -1114,18 +1226,21 @@ character shopMenuPotions(character& createChar) {
 				cout << "You have " << createChar.souls << " remaining." << endl;
 				createChar.expChar += 100;
 				levelUpCheck(createChar);
-				shopMenu(createChar);
+				system("pause");
+				shopMenuPotions(createChar);
 			}
 			break;
 		case 2:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
-				shopMenu(createChar);
+				system("pause");
+				shopMenuPotions(createChar);
 			}
 			else {
 				if (createChar.health >= createChar.HPTOTAL) {
 					cout << "Health already at max. " << createChar.health << " / " << createChar.HPTOTAL << endl;
-					shopMenu(createChar);
+					system("pause");
+					shopMenuPotions(createChar);
 				}
 				else {
 					//HealthPot
@@ -1141,19 +1256,22 @@ character shopMenuPotions(character& createChar) {
 					cout << "You bought a Health Potion granting 10 Health for 1 soul." << endl;
 					cout << "You have " << createChar.health << " / " << createChar.HPTOTAL << " health." << endl;
 					cout << "You have " << createChar.souls << " remaining." << endl;
-					shopMenu(createChar);
+					system("pause");
+					shopMenuPotions(createChar);
 				}
 			}
 				break;
 		case 3:
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
-				shopMenu(createChar);
+				system("pause");
+				shopMenuPotions(createChar);
 			}
 			else {
 				if (createChar.combatStats.rageUsed == 0) {
 						cout << "Rage already at max. " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
-					shopMenu(createChar);
+						system("pause");
+					shopMenuPotions(createChar);
 				}
 				else {
 					//RAGEPot
@@ -1163,7 +1281,8 @@ character shopMenuPotions(character& createChar) {
 
 					cout << "You bought a Rage Potion granting 50 Rage for 5 souls. " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
 					cout << "You have " << createChar.souls << " remaining." << endl;
-					shopMenu(createChar);
+					system("pause");
+					shopMenuPotions(createChar);
 					break;
 				}
 			}
@@ -1171,7 +1290,8 @@ character shopMenuPotions(character& createChar) {
 			//Large XP
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
-				shopMenu(createChar);
+				system("pause");
+				shopMenuPotions(createChar);
 			}
 			else {
 				//expPot
@@ -1180,19 +1300,22 @@ character shopMenuPotions(character& createChar) {
 				cout << "You have " << createChar.souls << " remaining." << endl;
 				createChar.expChar += 1000;
 				levelUpCheck(createChar);
-				shopMenu(createChar);
+				system("pause");
+				shopMenuPotions(createChar);
 			}
 			break;
 		case 5:
 			//FULL HEAL
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
-				shopMenu(createChar);
+				system("pause");
+				shopMenuPotions(createChar);
 			}
 			else {
 				if (createChar.health >= createChar.HPTOTAL) {
 					cout << "Health already at max. " << createChar.health << " / " << createChar.HPTOTAL << endl;
-					shopMenu(createChar);
+					system("pause");
+					shopMenuPotions(createChar);
 				}
 				else {
 					//HealthPot
@@ -1208,7 +1331,8 @@ character shopMenuPotions(character& createChar) {
 					cout << "You bought a Health Potion granting FULL Health for 25 souls." << endl;
 					cout << "You have " << createChar.health << " / " << createChar.HPTOTAL << " health." << endl;
 					cout << "You have " << createChar.souls << " remaining." << endl;
-					shopMenu(createChar);
+					system("pause");
+					shopMenuPotions(createChar);
 				}
 			}
 			break;
@@ -1216,12 +1340,14 @@ character shopMenuPotions(character& createChar) {
 			//FULL RAGE
 			if (createChar.souls == 0) {
 				cout << "You do not have enough for this purchace." << endl;
-				shopMenu(createChar);
+				system("pause");
+				shopMenuPotions(createChar);
 			}
 			else {
 				if (createChar.combatStats.rageUsed == 0) {
 					cout << "Rage already at max. " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
-					shopMenu(createChar);
+					system("pause");
+					shopMenuPotions(createChar);
 				}
 				else {
 					createChar.souls = createChar.souls - 15;
@@ -1230,7 +1356,8 @@ character shopMenuPotions(character& createChar) {
 
 					cout << "You bought a Rage Potion granting 100 Rage for 5 souls. " << createChar.rage << " / " << createChar.RAGETOTAL << endl;
 					cout << "You have " << createChar.souls << " remaining." << endl;
-					shopMenu(createChar);
+					system("pause");
+					shopMenuPotions(createChar);
 					break;
 				}
 			}
@@ -1238,12 +1365,15 @@ character shopMenuPotions(character& createChar) {
 		case 7:
 			shopMenu(createChar);
 			break;
+		default:
+			shopMenuPotions(createChar);
 			}
 		}
 				else
 				{
 					cout << pError << endl;
-					shopMenu(createChar);
+					system("pause");
+					shopMenuPotions(createChar);
 	}
 	return createChar;
 };

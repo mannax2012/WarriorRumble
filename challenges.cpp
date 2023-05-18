@@ -3,7 +3,7 @@ using namespace std;
 short pMenu[7] = { 1,2,3,4,5,6,7 };
 
 void challengeMenu(character& createChar) {
-	cout << "@@@@@@@@@@@@@-Challenges are under Construction-@@@@@@@@@@@@@" << endl;
+	system("cls");
 	int menuChoice;
 	cout << "|==========================================================|" << endl;
 	cout << "|                      CHALLENGE MENU                      |" << endl;
@@ -65,6 +65,7 @@ void challengeMenu(character& createChar) {
 	}
 };
 character challengeMenuEasy(character& createChar) {
+	system("cls");
 	createChar.monsters.expReward = (createChar.monsters.creatureLevel * 100);
 	createChar.monsters.soulsReward = (createChar.monsters.creatureLevel * 1);
 	deathPrintInfo(createChar);

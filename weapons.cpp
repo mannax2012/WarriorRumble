@@ -78,6 +78,7 @@ character buyWeaponAxe(character& createChar) {
     createChar.weaponAttack = (2 * createChar.strength) + createChar.combatStats.axeAttackDamage;
     cout << "You bought " << createChar.weaponQ << " " << createChar.weaponT << ". It has " << createChar.combatStats.axeAttackDamage << " Attack Power." << endl;
     cout << "You have " << createChar.souls << " remaining." << endl;
+    system("pause");
     return createChar;
 };
 
@@ -92,6 +93,7 @@ character buyWeaponSword(character& createChar) {
     createChar.weaponAttack = (2 * createChar.strength) + createChar.combatStats.swordAttackDamage;
     cout << "You bought " << createChar.weaponQ << " " << createChar.weaponT << ". It has " << createChar.combatStats.swordAttackDamage << " Attack Power." << endl;
     cout << "You have " << createChar.souls << " remaining." << endl;
+    system("pause");
     return createChar;
 };
 
@@ -106,5 +108,6 @@ character buyWeaponPoleaxe(character& createChar) {
     createChar.weaponAttack = (2 * createChar.strength) + createChar.combatStats.poleaxeAttackDamage;
     cout << "You bought " << createChar.weaponQ << " " << createChar.weaponT << ". It has " << createChar.combatStats.poleaxeAttackDamage << " Attack Power." << endl;
     cout << "You have " << createChar.souls << " remaining." << endl;
+    system("pause");
     return createChar;
 };
