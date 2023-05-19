@@ -1,6 +1,7 @@
 #include "includes.h"
 using namespace std;
 short youWin = 0;
+
 character jabAttack(character& createChar) {
     int dontMiss = (rand() % 5 + 5);
     int youMiss = (rand() % 5 + 5);
@@ -19,10 +20,9 @@ character jabAttack(character& createChar) {
         return createChar;
 }
 
-void jabPrint(character& createChar) {
-
-}
 character deathPrintInfo(character& createChar) {
+    createChar.monsters.expReward = (createChar.monsters.creatureLevel * 100);
+    createChar.monsters.soulsReward = (createChar.monsters.creatureLevel * 1);
     if (createChar.monsters.creatureHealth <= youWin) {
         createChar.monsters.creatureHealth = 0;
         createChar.expChar += createChar.monsters.expReward;
@@ -43,7 +43,7 @@ character deathPrintInfo(character& createChar) {
 character pDeathPrintInfo(character& createChar) {
     if (createChar.health <= youWin) {
         createChar.health = 0;
-        cout << "You DEAD. " << createChar.health << endl;
+        cout << "You are DEAD. " << createChar.health << endl;
         cout << "You have been defeated: " << createChar.name << " - HEALTH: " << createChar.health << " / " << createChar.HPTOTAL << endl;
         cout << "Character Experience: " << createChar.expChar << " / " << createChar.expCharTOTAL << endl;
         cout << "Character Souls: " << createChar.souls << endl;
@@ -63,6 +63,9 @@ character monsterJabAttack(character& createChar) {
         createChar.health -= createChar.combatStats.totalHealthDamage;
         if (createChar.health <= youWin) {
             createChar.health = 0;
+        }
+        if (createChar.combatStats.totalHealthDamage <= youWin) {
+            createChar.combatStats.totalHealthDamage = 0;
         }
         cout << createChar.monsters.creatureName << " jabs at " << createChar.name << " dealing  " << createChar.combatStats.totalHealthDamage << " total damage." << endl;
         cout << createChar.name << " - HEALTH: " << createChar.health << " / " << createChar.HPTOTAL << endl;

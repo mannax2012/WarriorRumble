@@ -1,5 +1,6 @@
 #include "includes.h"
 using namespace std;
+
 weapons weaponChoice = weapons::unarmed;
 materials weaponQuality = materials::Basic;
 materials swordQuality = materials::No;
@@ -21,7 +22,9 @@ string sheildQualityType = sheildTypeF(sheildQuality);
 string weaponType = weaponChoiceF(weaponChoice);
 short pArray[7] = { 1,2,3,4,5,6,7 };
 string characterName;
-int main() {
+
+
+int main(character& createChar) {
 
     TCHAR szOldTitle[MAX_PATH];
     TCHAR szNewTitle[MAX_PATH];
@@ -38,33 +41,87 @@ int main() {
             _tprintf(TEXT("SetConsoleTitle failed (%d)\n"), GetLastError());
         }
     };
-    system("pause");
-    cout << "Welcome to Warrior Rumble! Please enter your Warrior's name." << endl;
-    cout << "Enter Name: ";
-    cin >> characterName;
-    cout << "You have just taken your first steps to becoming a great Warrior. " << characterName << "! Welcome to the Warrior RUMBLE!!" << endl;
-   character player = characterCreation(characterName, swordQualityType, weaponQualityType, swordQuality, weaponType, helmQualityType, armorQualityType, sheildQualityType, helmQuality, weaponChoice);
-    printInfo(player);
-
-    system("pause");
-
-    pFirstScreen(player);
+    character player = characterCreation(characterName, swordQualityType, weaponQualityType, swordQuality, weaponType, helmQualityType, armorQualityType, sheildQualityType, helmQuality, weaponChoice);
+    gameStart(player);
     return 0;
 }
+void gameStart(character& createChar) {
+    system("cls");
+    int menuOptionChoice;
+    cout << "|==========================================================|" << endl;
+    cout << "|               WELCOME TO WARRIOR RUMBLE v1.0             |" << endl;
+    cout << "|==========================================================|" << endl;
+    cout << "|      1     |       START NEW CHARACTER     |             |" << endl;
+    cout << "|      2     |         LOAD CHARACTER        |             |" << endl;
+    cout << "|            |                               |             |" << endl;
+    cout << "|            |                               |             |" << endl;
+    cout << "|            |                               |             |" << endl;
+    cout << "|            |                               |             |" << endl;
+    cout << "|            |                               |             |" << endl;
+    cout << "|      7     |             EXIT              |             |" << endl;
+    cout << "|==========================================================|" << endl;
+    cout << "Choose a Menu Option: ";
+    cin >> menuOptionChoice;
 
+
+    if ((cin.fail())) {
+        cout << pError << endl;
+        cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        system("pause");
+        gameStart(createChar);
+    }
+
+    bool pExists = std::find(std::begin(pArray), std::end(pArray), menuOptionChoice) != std::end(pArray);
+    if (pExists) {
+        switch (menuOptionChoice) {
+        case 1:
+            startNewChar(createChar);
+            break;
+        case 2:
+            loadChar(createChar);
+            break;
+        case 7:
+            pExit(createChar);
+        default:
+            gameStart(createChar);
+            break;
+        }
+    }
+    else
+    {
+        cout << pError << endl;
+        system("pause");
+        pFirstScreen(createChar);
+    }
+}
+
+void startNewChar(character& createChar) {
+    system("cls");
+    cout << "|==========================================================|" << endl;
+    cout << "|               WELCOME TO WARRIOR RUMBLE v1.0             |" << endl;
+    cout << "|==========================================================|" << endl;
+    cout << "| Enter a Name for your NEW WARRIOR: ";
+    cin >> characterName;
+    cout << "You have just taken your first steps to becoming a great Warrior. " << characterName << "! Welcome to the Warrior RUMBLE!!" << endl;
+    character player = characterCreation(characterName, swordQualityType, weaponQualityType, swordQuality, weaponType, helmQualityType, armorQualityType, sheildQualityType, helmQuality, weaponChoice);
+    printInfo(player);
+    system("pause");
+    pFirstScreen(player);
+}
 void pFirstScreen(character& createChar) {
     system("cls");
     int menuOptionChoice;
     cout << "|==========================================================|" << endl;
-    cout << "|                        Main Menu                         |" << endl;
+    cout << "|                       RUMBLE MENU                        |" << endl;
     cout << "|==========================================================|" << endl;
     cout << "|      1     |         CHARACTER SHEET       |             |" << endl;
     cout << "|      2     |          RUMBLE SHOP          |             |" << endl;
     cout << "|      3     |         CHALLENGE MENU        |             |" << endl;
     cout << "|            |                               |             |" << endl;
-    cout << "|            |                               |             |" << endl;
-    cout << "|      5     |             SAVE              |             |" << endl;
-    cout << "|            |                               |             |" << endl;
+    cout << "|      4     |         LOAD CHARACTER        |             |" << endl;
+    cout << "|      5     |           SAVE GAME           |             |" << endl;
+    cout << "|      6     |         NEW CHARACTER         |             |" << endl;
     cout << "|      7     |             EXIT              |             |" << endl;
     cout << "|==========================================================|" << endl;
     cout << "Choose a Menu Option: ";
@@ -92,10 +149,18 @@ void pFirstScreen(character& createChar) {
         case 3:
             challengeMenu(createChar);
             break;
+        case 4:
+            loadChar(createChar);
+            break;
         case 5:
             saveChar(createChar);
+            break;
+        case 6:
+            startNewChar(createChar);
+            break;
         case 7:
             pExit(createChar);
+            break;
         default:
             pFirstScreen(createChar);
             break;
@@ -140,14 +205,15 @@ void printInfo(character& createChar) {
 }
 
 int pExit(character& createChar) {
-    system("pause");
     cout << "Exiting Game!" << endl;
+    system("pause");
     exit(0);
     return 0;
 }
 
 character saveChar(character& createChar) {
     string saveTitle = createChar.name + ".txt";
+    createChar.poleaxeWeaponQ = poleaxeQuality;
     ofstream saveCharFile;
     saveCharFile.open(saveTitle);
     saveCharFile << "\t\t\t" << createChar.name << ", " << createChar.level << "\n";
@@ -161,9 +227,10 @@ character saveChar(character& createChar) {
     // Always check to see if the file is open and for errors.
     if (SaveCharFile.is_open())
     {
-        std::cout << "SAVING... " << createChar.name << ".txt has been created." << endl;
+
+        std::cout << "SAVING... " << createChar.name << " has saved the game." << endl;
+
         // If it is open we can do our writing to the file.
-        // Here is a example of this.
         SaveCharFile << createChar.name << endl;
         SaveCharFile << createChar.level << endl;
         SaveCharFile << createChar.expChar << endl;
@@ -176,10 +243,7 @@ character saveChar(character& createChar) {
         SaveCharFile << createChar.charArmor.armorTotal << endl;
         SaveCharFile << createChar.weaponAttack << endl;
         SaveCharFile << createChar.souls << endl;
-        SaveCharFile << createChar.weaponQ << endl;
-        SaveCharFile << createChar.armorQHelm << endl;
-        SaveCharFile << createChar.armorQBody << endl;
-        SaveCharFile << createChar.armorQSheild << endl;
+        SaveCharFile << createChar.poleaxeWeaponQ;
     }
     else
     {
@@ -189,6 +253,45 @@ character saveChar(character& createChar) {
 
     // After you are done with the file always close it.
     SaveCharFile.close();
+    system("pause");
+    pFirstScreen(createChar);
+    return createChar;
+}
+character loadChar(character& createChar) {
+    
+    cout << "Enter the name of the Character File: ";
+        cin >> characterName;
+        character player = characterCreation(characterName, swordQualityType, weaponQualityType, swordQuality, weaponType, helmQualityType, armorQualityType, sheildQualityType, helmQuality, weaponChoice);
+    string path = characterName + ".txt";
+
+    ifstream fin;
+
+    fin.open(path);
+    if (fin.is_open()) {
+        fin >> createChar.name;
+        fin >> createChar.level;
+        fin >> createChar.expChar;
+        fin >> createChar.expCharTOTAL;
+        fin >> createChar.health;
+        fin >> createChar.HPTOTAL;
+        fin >> createChar.rage;
+        fin >> createChar.strength;
+        fin >> createChar.stamina;
+        fin >> createChar.charArmor.armorTotal;
+        fin >> createChar.weaponAttack;
+        fin >> createChar.souls;
+        fin >> createChar.poleaxeWeaponQ;
+
+       // fin >> static_cast<int>(weaponChoice);
+       // fin >> helmQuality;
+       // fin >> armorQuality;
+       // fin >> sheildQuality;
+        fin.close();
+    }
+
+    //weaponQuality = createChar.poleaxeWeaponQ;
+    weaponQualityType = weaponTypeF(weaponQuality);
+    printInfo(createChar);
     system("pause");
     pFirstScreen(createChar);
     return createChar;

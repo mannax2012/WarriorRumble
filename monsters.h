@@ -2,7 +2,9 @@
 
 typedef struct monsters {
 
-    string creatureName;
+    string creatureName,
+        attackList,
+        menuTitle;
     int creatureHealth,
         creatureLevel = 1,
         creatureStrength,

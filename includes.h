@@ -24,6 +24,9 @@ character characterCreation(string characterName, string swordQualityType, strin
 void printInfo(character& createChar);
 void levelUpTask(character& createChar);
 character saveChar(character& createChar);
+character loadChar(character& createChar);
+void gameStart(character& createChar);
+void startNewChar(character& createChar);
 character levelUpCheck(character& createChar);
 string weaponTypeF(materials weaponQuality);
 string swordWeaponTypeF(materials swordQuality);
@@ -56,10 +59,16 @@ character buyArmorSheild(character& createChar);
 
 //challenge menu
 void challengeMenu(character& createChar);
-character challengeMenuEasy(character& createChar);
 character skeletonEasy(character& createChar);
 character jabAttack(character& createChar);
 character deathPrintInfo(character& createChar);
 character monsterJabAttack(character& createChar);
 character pDeathPrintInfo(character& createChar);
+character challengeMenuFIGHT(character& createChar);
+character warriorMedium(character& createChar);
+character warriorHard(character& createChar);
+character warriorExpert(character& createChar);
+character warriorMaster(character& createChar);
+character warriorLegendary(character& createChar);
+
 #endif //WARRIOR_RUMBLE_INCLUDES_H

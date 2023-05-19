@@ -32,22 +32,27 @@ void challengeMenu(character& createChar) {
 		switch (menuChoice) {
 		case 1:
 			skeletonEasy(createChar);
-			challengeMenuEasy(createChar);
+			challengeMenuFIGHT(createChar);
 			break;
 		case 2:
-			challengeMenu(createChar);
+			warriorMedium(createChar);
+			challengeMenuFIGHT(createChar);
 			break;
 		case 3:
-			challengeMenu(createChar);
+			warriorHard(createChar);
+			challengeMenuFIGHT(createChar);
 			break;
 		case 4:
-			challengeMenu(createChar);
+			warriorExpert(createChar);
+			challengeMenuFIGHT(createChar);
 			break;
 		case 5:
-			challengeMenu(createChar);
+			warriorMaster(createChar);
+			challengeMenuFIGHT(createChar);
 			break;
 		case 6:
-			challengeMenu(createChar);
+			warriorLegendary(createChar);
+			challengeMenuFIGHT(createChar);
 			break;
 		case 7:
 			pFirstScreen(createChar);
@@ -64,65 +69,68 @@ void challengeMenu(character& createChar) {
 		challengeMenu(createChar);
 	}
 };
-character challengeMenuEasy(character& createChar) {
+
+character challengeMenuFIGHT(character& createChar) {
 	system("cls");
-	createChar.monsters.expReward = (createChar.monsters.creatureLevel * 100);
-	createChar.monsters.soulsReward = (createChar.monsters.creatureLevel * 1);
 	deathPrintInfo(createChar);
 	pDeathPrintInfo(createChar);
 	int menuChoice;
-		cout << "|==========================================================|" << endl;
-		cout << "|                     CHALLENGE - EASY                     |" << endl;
-		cout << "|==========================================================|" << endl;
-		cout << "| Challenger: " << createChar.monsters.creatureName << endl;
-		cout << "| Level: " << createChar.monsters.creatureLevel << endl;
-		cout << "| Health: " << createChar.monsters.creatureHealth << " / " << createChar.monsters.creatureHPTOTAL << endl;
-		cout << "| Strength: " << createChar.monsters.creatureStrength << endl;
-		cout << "| Stamina: " << createChar.monsters.creatureStamina << endl;
-		cout << "| Armor: " << createChar.monsters.creatureArmorTOTAL << endl;
-		cout << "| Attack Damage: " << createChar.monsters.creatureWeaponAttack << endl;
-		cout << "| Weapon Attacks: Jab" << endl;
-		cout << "|==========================================================|" << endl;
-		cout << "|  (1)Jab Attack (2) Slash Attack (3) Block (4)Surrender   |" << endl;
-		cout << "|==========================================================|" << endl;
-		cout << "Choose: ";
-		cin >> menuChoice;
+	cout << "|==========================================================|" << endl;
+	cout << createChar.monsters.menuTitle << endl;
+	cout << "|==========================================================|" << endl;
+	cout << "| Challenger: " << createChar.monsters.creatureName << endl;
+	cout << "| Level: " << createChar.monsters.creatureLevel << endl;
+	cout << "| Health: " << createChar.monsters.creatureHealth << " / " << createChar.monsters.creatureHPTOTAL << endl;
+	cout << "| Strength: " << createChar.monsters.creatureStrength << endl;
+	cout << "| Stamina: " << createChar.monsters.creatureStamina << endl;
+	cout << "| Armor: " << createChar.monsters.creatureArmorTOTAL << endl;
+	cout << "| Attack Damage: " << createChar.monsters.creatureWeaponAttack << endl;
+	cout << "| Weapon Attacks: " << createChar.monsters.attackList << endl;
+	cout << "|==========================================================|" << endl;
+	cout << "|  (1)Jab Attack (2) Slash Attack (3) Block (4)Surrender   |" << endl;
+	cout << "|==========================================================|" << endl;
+	cout << "Choose: ";
+	cin >> menuChoice;
 
-		if ((cin.fail())) {
-			cout << pError << endl;
-			cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			challengeMenuEasy(createChar);
-		}
+	if ((cin.fail())) {
+		cout << pError << endl;
+		cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		system("pause");
+		challengeMenuFIGHT(createChar);
+	}
 
-		bool pExists = std::find(std::begin(pMenu), std::end(pMenu), menuChoice) != std::end(pMenu);
-		if (pExists) {
-			switch (menuChoice) {
-			case 1:
-				jabAttack(createChar);
-				monsterJabAttack(createChar);
-				system("pause");
-				challengeMenuEasy(createChar);
-				break;
-			case 2:
-				challengeMenuEasy(createChar);
-				break;
-			case 3:
-				challengeMenuEasy(createChar);
-				break;
-			case 4:
-				pFirstScreen(createChar);
-			default:
-				cout << pError << endl;
-				challengeMenuEasy(createChar);
-				break;
-			}
-		}
-		else
-		{
+	bool pExists = std::find(std::begin(pMenu), std::end(pMenu), menuChoice) != std::end(pMenu);
+	if (pExists) {
+		switch (menuChoice) {
+		case 1:
+			jabAttack(createChar);
+			monsterJabAttack(createChar);
+			system("pause");
+			challengeMenuFIGHT(createChar);
+			break;
+		case 2:
+			challengeMenuFIGHT(createChar);
+			break;
+		case 3:
+			challengeMenuFIGHT(createChar);
+			break;
+		case 4:
+			pFirstScreen(createChar);
+			break;
+		default:
 			cout << pError << endl;
-			challengeMenuEasy(createChar);
+			system("pause");
+			challengeMenuFIGHT(createChar);
+			break;
 		}
-		return createChar;
-	
+	}
+	else
+	{
+		cout << pError << endl;
+		system("pause");
+		challengeMenuFIGHT(createChar);
+	}
+	return createChar;
+
 }

@@ -14,8 +14,8 @@ typedef struct lvlUp {
 } lvlUp;
 
 typedef struct combat {
-    string jabAttack = "Jab",
-        slashAttack;
+    string jabAttack = "Quick Jab",
+        slashAttack = "Heavy Slash";
 
     int totalHealthDamage = 0,
         rageRemaining = 0,
