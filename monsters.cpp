@@ -19,7 +19,7 @@ character skeletonEasy(character& createChar) {
 character warriorMedium(character& createChar) {
     createChar.monsters.menuTitle = "|                    CHALLENGE - MEDIUM                    |";
     createChar.monsters.attackList = createChar.combatStats.jabAttack;
-    createChar.monsters.creatureName = "Bannon";
+    createChar.monsters.creatureName = "Mildew";
     createChar.monsters.creatureLevel = 2 + (rand() % 3 + 3);
     createChar.monsters.creatureStrength = (rand() % 5 + 5) + createChar.monsters.creatureLevel;
     createChar.monsters.creatureStamina = (rand() % 5 + 5) + createChar.monsters.creatureLevel;
@@ -34,7 +34,7 @@ character warriorMedium(character& createChar) {
 character warriorHard(character& createChar) {
     createChar.monsters.menuTitle = "|                    CHALLENGE - HARD                      |";
     createChar.monsters.attackList = createChar.combatStats.jabAttack;
-    createChar.monsters.creatureName = "Mildew";
+    createChar.monsters.creatureName = "Bannon";
     createChar.monsters.creatureLevel = 3 + (rand() % 3 + 3);
     createChar.monsters.creatureStrength = (rand() % 5 + 5) + createChar.monsters.creatureLevel;
     createChar.monsters.creatureStamina = (rand() % 5 + 5) + createChar.monsters.creatureLevel;

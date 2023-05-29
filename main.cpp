@@ -83,6 +83,7 @@ void gameStart(character& createChar) {
             break;
         case 7:
             pExit(createChar);
+            break;
         default:
             gameStart(createChar);
             break;
@@ -213,14 +214,14 @@ int pExit(character& createChar) {
 
 character saveChar(character& createChar) {
     string saveTitle = createChar.name + ".txt";
-    createChar.poleaxeWeaponQ = poleaxeQuality;
+    createChar.saveLoad.saveWeaponT = swordQuality;
     ofstream saveCharFile;
     saveCharFile.open(saveTitle);
-    saveCharFile << "\t\t\t" << createChar.name << ", " << createChar.level << "\n";
+    saveCharFile << "\t\t\t\t\t\t\t\t" << createChar.name << ", " << createChar.level << ", " << createChar.expChar << ", " << createChar.expCharTOTAL << ", " << weaponQuality << ", " << weaponChoice << ", " << helmQuality << ", " << armorQuality << ", " << sheildQuality << "\n";
     saveCharFile.close();
 
     saveCharFile.seekp(0, std::ios::end); //to ensure the put pointer is at the end
-    saveCharFile << "\t\t\t" << createChar.name << ", " << createChar.level;
+    saveCharFile << "\t\t\t\t\t\t\t\t" << createChar.name << ", " << createChar.level << ", " << createChar.expChar << ", " << createChar.expCharTOTAL << ", " << weaponQuality << ", " << weaponChoice << ", " << helmQuality << ", " << armorQuality << ", " << sheildQuality;
 
     std::ofstream SaveCharFile(saveTitle);
 
@@ -243,12 +244,18 @@ character saveChar(character& createChar) {
         SaveCharFile << createChar.charArmor.armorTotal << endl;
         SaveCharFile << createChar.weaponAttack << endl;
         SaveCharFile << createChar.souls << endl;
-        SaveCharFile << createChar.poleaxeWeaponQ;
+        SaveCharFile << (int)weaponQuality << endl;
+        SaveCharFile << (int)weaponChoice << endl;
+        SaveCharFile << (int)helmQuality << endl;
+        SaveCharFile << (int)armorQuality << endl;
+        SaveCharFile << (int)sheildQuality << endl;
     }
     else
     {
         // If the file isn't open something went wrong. Point that out.
         std::cout << "Something went wrong with opening the file!";
+        system("pause");
+        pFirstScreen(createChar);
     }
 
     // After you are done with the file always close it.
@@ -258,13 +265,12 @@ character saveChar(character& createChar) {
     return createChar;
 }
 character loadChar(character& createChar) {
-    
+
     cout << "Enter the name of the Character File: ";
-        cin >> characterName;
-        character player = characterCreation(characterName, swordQualityType, weaponQualityType, swordQuality, weaponType, helmQualityType, armorQualityType, sheildQualityType, helmQuality, weaponChoice);
+    cin >> characterName;
     string path = characterName + ".txt";
 
-    ifstream fin;
+    std::ifstream fin;
 
     fin.open(path);
     if (fin.is_open()) {
@@ -280,19 +286,198 @@ character loadChar(character& createChar) {
         fin >> createChar.charArmor.armorTotal;
         fin >> createChar.weaponAttack;
         fin >> createChar.souls;
-        fin >> createChar.poleaxeWeaponQ;
+        fin >> createChar.saveLoad.saveWeaponQ;
+        fin >> createChar.saveLoad.saveWeaponT;
+        fin >> createChar.saveLoad.saveHelmQ;
+        fin >> createChar.saveLoad.saveArmorQ;
+        fin >> createChar.saveLoad.saveShieldQ;
 
-       // fin >> static_cast<int>(weaponChoice);
-       // fin >> helmQuality;
-       // fin >> armorQuality;
-       // fin >> sheildQuality;
+        // fin >> static_cast<int>(weaponChoice);
+        // fin >> helmQuality;
+        // fin >> armorQuality;
+        // fin >> sheildQuality;
         fin.close();
     }
+    
+    weaponQCheck(createChar);
+    weaponTCheck(createChar);
+    helmQCheck(createChar);
+    armorQCheck(createChar);
+    shieldQCheck(createChar);
 
-    //weaponQuality = createChar.poleaxeWeaponQ;
-    weaponQualityType = weaponTypeF(weaponQuality);
+    createChar.armorQBody = armorQualityType;
+    createChar.armorQHelm = helmQualityType;
+    createChar.armorQSheild = sheildQualityType;
+    createChar.weaponT = weaponType;
+    createChar.weaponQ = weaponQualityType;
+    createChar.swordWeaponQ = swordQualityType;
+    character player = characterCreation(characterName, swordQualityType, weaponQualityType, swordQuality, weaponType, helmQualityType, armorQualityType, sheildQualityType, helmQuality, weaponChoice);
     printInfo(createChar);
     system("pause");
     pFirstScreen(createChar);
     return createChar;
 }
+void weaponTCheck(character& createChar) {
+    switch (createChar.saveLoad.saveWeaponT) {
+    case 3:
+        weaponChoice = weapons::sword;
+        weaponType = weaponChoiceF(weaponChoice);
+        break;
+    case 4:
+        weaponChoice = weapons::axe;
+        weaponType = weaponChoiceF(weaponChoice);
+        break;
+    case 5:
+        weaponChoice = weapons::poleaxe;
+        weaponType = weaponChoiceF(weaponChoice);
+        break;
+    default:
+        weaponChoice = weapons::unarmed;
+        weaponType = weaponChoiceF(weaponChoice);
+        break;
+    }
+};
+void weaponQCheck(character& createChar) {
+    switch (createChar.saveLoad.saveWeaponQ) {
+    case 1:
+        weaponQuality = materials::Basic;
+        weaponQualityType = weaponTypeF(weaponQuality);
+        break;
+    case 3:
+        weaponQuality = materials::Oak;
+        weaponQualityType = weaponTypeF(weaponQuality);
+        break;
+    case 4:
+        weaponQuality = materials::Copper;
+        weaponQualityType = weaponTypeF(weaponQuality);
+        break;
+    case 5:
+        weaponQuality = materials::Bronze;
+        weaponQualityType = weaponTypeF(weaponQuality);
+        break;
+    case 6:
+        weaponQuality = materials::Iron;
+        weaponQualityType = weaponTypeF(weaponQuality);
+    case 7:
+        weaponQuality = materials::Steel;
+        weaponQualityType = weaponTypeF(weaponQuality);
+        break;
+    case 10:
+        weaponQuality = materials::Mithril;
+        weaponQualityType = weaponTypeF(weaponQuality);
+        break;
+    default:
+        weaponQuality = materials::No;
+        weaponQualityType = weaponTypeF(weaponQuality);
+        break;
+    }
+};
+void helmQCheck(character& createChar) {
+    switch (createChar.saveLoad.saveHelmQ) {
+    case 1:
+        helmQuality = materials::Basic;
+        helmQualityType = helmTypeF(helmQuality);
+        break;
+    case 3:
+        helmQuality = materials::Oak;
+        helmQualityType = helmTypeF(helmQuality);
+        break;
+    case 4:
+        helmQuality = materials::Copper;
+        helmQualityType = helmTypeF(helmQuality);
+        break;
+    case 5:
+        helmQuality = materials::Bronze;
+        helmQualityType = helmTypeF(helmQuality);
+        break;
+    case 6:
+        helmQuality = materials::Iron;
+        helmQualityType = helmTypeF(helmQuality);
+        break;
+    case 7:
+        helmQuality = materials::Steel;
+        helmQualityType = helmTypeF(helmQuality);
+        break;
+    case 10:
+        helmQuality = materials::Mithril;
+        helmQualityType = helmTypeF(helmQuality);
+        break;
+    default:
+        helmQuality = materials::No;
+        helmQualityType = helmTypeF(helmQuality);
+        break;
+    }
+
+};
+void armorQCheck(character& createChar) {
+    switch (createChar.saveLoad.saveArmorQ) {
+    case 1:
+        armorQuality = materials::Basic;
+        armorQualityType = armorTypeF(armorQuality);
+        break;
+    case 3:
+        armorQuality = materials::Oak;
+        armorQualityType = armorTypeF(armorQuality);
+        break;
+    case 4:
+        armorQuality = materials::Copper;
+        armorQualityType = armorTypeF(armorQuality);
+        break;
+    case 5:
+        armorQuality = materials::Bronze;
+        armorQualityType = armorTypeF(armorQuality);
+        break;
+    case 6:
+        armorQuality = materials::Iron;
+        armorQualityType = armorTypeF(armorQuality);
+        break;
+    case 7:
+        armorQuality = materials::Steel;
+        armorQualityType = armorTypeF(armorQuality);
+        break;
+    case 10:
+        armorQuality = materials::Mithril;
+        armorQualityType = armorTypeF(armorQuality);
+        break;
+    default:
+        armorQuality = materials::No;
+        armorQualityType = armorTypeF(armorQuality);
+        break;
+    }
+};
+void shieldQCheck(character& createChar) {
+    switch (createChar.saveLoad.saveShieldQ) {
+    case 1:
+        sheildQuality = materials::Basic;
+        sheildQualityType = sheildTypeF(sheildQuality);
+        break;
+    case 3:
+        sheildQuality = materials::Oak;
+        sheildQualityType = sheildTypeF(sheildQuality);
+        break;
+    case 4:
+        sheildQuality = materials::Copper;
+        sheildQualityType = sheildTypeF(sheildQuality);
+        break;
+    case 5:
+        sheildQuality = materials::Bronze;
+        sheildQualityType = sheildTypeF(sheildQuality);
+        break;
+    case 6:
+        sheildQuality = materials::Iron;
+        sheildQualityType = sheildTypeF(sheildQuality);
+        break;
+    case 7:
+        sheildQuality = materials::Steel;
+        sheildQualityType = sheildTypeF(sheildQuality);
+        break;
+    case 10:
+        sheildQuality = materials::Mithril;
+        sheildQualityType = sheildTypeF(sheildQuality);
+        break;
+    default:
+        sheildQuality = materials::No;
+        sheildQualityType = sheildTypeF(sheildQuality);
+        break;
+    }
+};

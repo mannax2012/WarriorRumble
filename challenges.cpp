@@ -87,7 +87,7 @@ character challengeMenuFIGHT(character& createChar) {
 	cout << "| Attack Damage: " << createChar.monsters.creatureWeaponAttack << endl;
 	cout << "| Weapon Attacks: " << createChar.monsters.attackList << endl;
 	cout << "|==========================================================|" << endl;
-	cout << "|  (1)Jab Attack (2) Slash Attack (3) Block (4)Surrender   |" << endl;
+	cout << "|  (1) Jab Attack (2) Slash Attack (3) Block (4)Surrender  |" << endl;
 	cout << "|==========================================================|" << endl;
 	cout << "Choose: ";
 	cin >> menuChoice;

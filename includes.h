@@ -23,8 +23,6 @@
 character characterCreation(string characterName, string swordQualityType, string weaponQualityType, materials swordQuality, string weaponType, string helmQualityType, string armorQualityType, string sheildQualityType, materials helmQuality, weapons weaponsChoice);
 void printInfo(character& createChar);
 void levelUpTask(character& createChar);
-character saveChar(character& createChar);
-character loadChar(character& createChar);
 void gameStart(character& createChar);
 void startNewChar(character& createChar);
 character levelUpCheck(character& createChar);
@@ -70,5 +68,14 @@ character warriorHard(character& createChar);
 character warriorExpert(character& createChar);
 character warriorMaster(character& createChar);
 character warriorLegendary(character& createChar);
+
+//saveLoad
+void weaponTCheck(character& createChar);
+void weaponQCheck(character& createChar);
+void helmQCheck(character& createChar);
+void armorQCheck(character& createChar);
+void shieldQCheck(character& createChar);
+character saveChar(character& createChar);
+character loadChar(character& createChar);
 
 #endif //WARRIOR_RUMBLE_INCLUDES_H

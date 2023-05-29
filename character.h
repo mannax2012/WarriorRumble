@@ -3,6 +3,13 @@
 #include "monsters.h"
 using namespace std;
 
+typedef struct saveLoad {
+    int saveWeaponQ,
+        saveWeaponT,
+        saveHelmQ,
+        saveArmorQ,
+        saveShieldQ;
+}saveLoad;
 typedef struct lvlUp {
 
     int health = 0,
@@ -66,6 +73,7 @@ typedef struct character {
     materials valsUp;
     weapons pWeapons;
     monsters monsters;
+    saveLoad saveLoad;
 } character;
 
 #endif //WARRIOR_RUMBLE_CHARACTER_H

@@ -143,6 +143,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="monsters.cpp" />
     <ClCompile Include="rumbleShop.cpp" />
+    <ClCompile Include="saveLoad.cpp" />
     <ClCompile Include="weapons.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
